@@ -2,6 +2,12 @@ import homeVector from "../assets/home-vector.jpg";
 import abdelkareem from "../assets/abdelkareem.png";
 import googlePlayIcon from "../assets/googleplay.png";
 import appStoreIcon from "../assets/appstore.png";
+import { useEffect } from "react";
+import Swiper from "swiper";
+import { Scrollbar } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/scrollbar";
+import Card from "../components/Card";
 
 function Landing() {
   return (
@@ -82,13 +88,55 @@ function MobadraVideo() {
 }
 
 function Forms() {
+  useEffect(() => {
+    new Swiper(".swiper", {
+      modules: [Scrollbar],
+      speed: 400,
+      slidesPerView: 1.25,
+      spaceBetween: 15,
+      grabCursor: true,
+      scrollbar: {
+        el: ".swiper-scrollbar",
+        draggable: true,
+      },
+      breakpoints: {
+        550: {
+          slidesPerView: 2.25,
+          spaceBetween: 15,
+        },
+        1024: {
+          slidesPerView: 3.25,
+          spaceBetween: 20,
+        },
+        1280: {
+          slidesPerView: 4.25,
+          spaceBetween: 30,
+        },
+      },
+    });
+  }, []);
+
   return (
-    <div className="relative isolate overflow-hidden py-12 sm:py-16 lg:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
+    <div className="py-12 sm:py-16 lg:py-24 mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="text-center">
         <h2 className="font-bold text-5xl mb-5">الاستمارات</h2>
         <p className="mt-5 leading-8 font-medium text-gray-700">
           تصفح جميع استمارات الزواج من هنا
         </p>
+      </div>
+      <div className="swiper select-none mx-auto max-w-2xl px-4 py-12 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
+        <h2 className="sr-only">Products</h2>
+        <div className="swiper-wrapper cursor-grab active:cursor-grabbing">
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </div>
+        <div className="swiper-scrollbar cursor-grab active:cursor-grabbing !h-2 !w-1/2 !left-1/2 -translate-x-1/2"></div>
       </div>
     </div>
   );
@@ -137,7 +185,7 @@ function ShekhMahmoud() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <figcaption>
           <img
-            className="mx-auto h-28 w-28 rounded-full border-2 border-green-500"
+            className="mx-auto object-cover h-28 w-28 rounded-full border-2 border-green-500"
             src={abdelkareem}
             alt=""
           />
