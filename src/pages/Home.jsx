@@ -185,7 +185,7 @@ function ShekhMahmoud() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <figcaption>
           <img
-            className="mx-auto object-cover h-28 w-28 rounded-full border-2 border-green-500"
+            className="mx-auto object-cover h-28 w-28 rounded-full border-4 border-emerald-600"
             src={abdelkareem}
             alt=""
           />

@@ -51,11 +51,11 @@ function Navbar() {
 
   return (
     <nav className="bg-gray-800">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-2 md:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <div className="flex flex-1 items-center justify-between sm:items-stretch">
+          <div className="flex flex-1 items-center justify-between md:items-stretch">
             {/* Hamburger button for mobile view */}
-            <div className="flex items-center sm:hidden">
+            <div className="flex items-center md:hidden">
               <button
                 type="button"
                 className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -86,12 +86,15 @@ function Navbar() {
             </div>
             <div className="flex">
               {/* Logo */}
-              <Link to="/" className="flex flex-shrink-0 items-center">
+              <Link
+                to={ROUTES.HOME}
+                className="flex flex-shrink-0 items-center"
+              >
                 <img className="h-8 w-auto" src={logo} alt="الشركة" />
               </Link>
 
               {/* Navigation Links */}
-              <div className="hidden sm:block sm:mr-6">
+              <div className="hidden md:block md:mr-6">
                 <div className="flex gap-2">
                   {navLinks.map((link) => (
                     <Link
@@ -114,7 +117,7 @@ function Navbar() {
             <div className="flex gap-3 items-center relative">
               <Link
                 to={`${ROUTES.FORMS}/${ROUTES.NEW_FROM}`}
-                className="hidden sm:flex items-center text-sm font-medium bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700"
+                className="hidden md:flex items-center text-sm font-medium bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -180,7 +183,7 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="sm:hidden" id="mobile-menu">
+        <div className="md:hidden" id="mobile-menu">
           <div className="space-y-1 px-2 pb-3 pt-2">
             {navLinks.map((link) => (
               <Link
