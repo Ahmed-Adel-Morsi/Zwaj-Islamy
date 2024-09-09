@@ -22,9 +22,11 @@ import {
 import Card from "../components/Card";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../routes";
+import AllAlerts from "../components/AllAlerts";
 
 const sortOptions = [
-  { name: "رقم الاستمارة", href: "#", current: true },
+  { name: "عشوائى", href: "#", current: true },
+  { name: "رقم الاستمارة", href: "#", current: false },
   { name: "السن: من الأصغر للأكبر", href: "#", current: false },
   { name: "السن: من الأكبر للأصغر", href: "#", current: false },
   { name: "الطول: من الأقصر للأطول", href: "#", current: false },
@@ -69,9 +71,9 @@ const filters = [
     id: "status",
     name: "الحالة الاجتماعية",
     options: [
-      { value: "single", label: "عزباء", checked: false },
-      { value: "divorcee", label: "مطلقة", checked: false },
-      { value: "widow", label: "أرملة", checked: false },
+      { value: "single", label: "أعزب", checked: false },
+      { value: "divorcee", label: "مطلع", checked: false },
+      { value: "widow", label: "أرمل", checked: false },
     ],
   },
   {
@@ -82,14 +84,14 @@ const filters = [
       { value: "light", label: "فاتح", checked: false },
       { value: "burgundy", label: "عنابي", checked: false },
       { value: "wheaten", label: "قمحي", checked: false },
-      { value: "blonde", label: "شقراء", checked: false },
-      { value: "black", label: "سمراء", checked: false },
-      { value: "white", label: "بيضاء / ناصعة البياض", checked: false },
+      { value: "blonde", label: "أشقر", checked: false },
+      { value: "black", label: "أسمر", checked: false },
+      { value: "white", label: "أبيض / ناصع البياض", checked: false },
     ],
   },
   {
     id: "haveKids",
-    name: "لديها اطفال",
+    name: "لديه اطفال",
     options: [
       { value: "yes", label: "نعم", checked: false },
       { value: "no", label: "لا", checked: false },
@@ -124,10 +126,10 @@ const filters = [
     id: "qualification",
     name: "المؤهل",
     options: [
-      { value: "doctor", label: "دكتور / دكتورة", checked: false },
-      { value: "engineer", label: "مهندس / مهندسة", checked: false },
-      { value: "teacher", label: "معلم / معلمة", checked: false },
-      { value: "graduate", label: "خريج / خريجة", checked: false },
+      { value: "doctor", label: "دكتور", checked: false },
+      { value: "engineer", label: "مهندس", checked: false },
+      { value: "teacher", label: "معلم", checked: false },
+      { value: "graduate", label: "خريج", checked: false },
       { value: "highSchool", label: "مؤهل متوسط ( ثانوية )", checked: false },
       { value: "middleSchool", label: "شهادة اعدادية", checked: false },
       { value: "primarySchool", label: "شهادة ابتدائية", checked: false },
@@ -137,7 +139,7 @@ const filters = [
   },
   {
     id: "acceptDivorcedWidow",
-    name: "توافق بمطلق او ارمل",
+    name: "توافق بمطلقه او ارمله",
     options: [
       { value: "yes", label: "نعم", checked: false },
       { value: "no", label: "لا", checked: false },
@@ -145,12 +147,12 @@ const filters = [
   },
   {
     id: "groomQualification",
-    name: "مؤهل العريس",
+    name: "مؤهل العروسه",
     options: [
-      { value: "doctor", label: "دكتور / دكتورة", checked: false },
-      { value: "engineer", label: "مهندس / مهندسة", checked: false },
-      { value: "teacher", label: "معلم / معلمة", checked: false },
-      { value: "graduate", label: "خريج / خريجة", checked: false },
+      { value: "doctor", label: " دكتورة", checked: false },
+      { value: "engineer", label: "مهندسة", checked: false },
+      { value: "teacher", label: "معلمة", checked: false },
+      { value: "graduate", label: "خريجة", checked: false },
       { value: "highSchool", label: "مؤهل متوسط ( ثانوية )", checked: false },
       { value: "middleSchool", label: "شهادة اعدادية", checked: false },
       { value: "primarySchool", label: "شهادة ابتدائية", checked: false },
@@ -160,7 +162,7 @@ const filters = [
   },
   {
     id: "acceptPolygamy",
-    name: "تقبل التعدد",
+    name: "يوافق بالتعدد",
     options: [
       { value: "yes", label: "نعم", checked: false },
       { value: "no", label: "لا", checked: false },
@@ -296,8 +298,9 @@ function MenForms() {
         </div>
       </Dialog>
 
-      <main className="mx-auto max-w-[1700px] px-6 sm:px-8 lg:px-10">
-        <div className="flex flex-col sm:flex-row items-center sm:items-baseline gap-8 justify-between border-b border-gray-200 pb-6 pt-12 md:pt-16 xl:pt-24">
+      <main className="mx-auto max-w-[1700px] px-6 sm:px-8 lg:px-10 pt-12 md:pt-16 xl:pt-24">
+        <AllAlerts />
+        <div className="flex flex-col sm:flex-row items-center sm:items-baseline gap-8 justify-between border-b border-gray-200 pb-6">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 text-center sm:text-right">
             استمارات الرجال
           </h1>

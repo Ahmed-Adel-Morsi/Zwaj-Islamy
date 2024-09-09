@@ -1,6 +1,6 @@
 function Courses() {
   return (
-    <div className="relative isolate overflow-hidden bg-gray-900 py-14">
+    <div className="relative flex-grow isolate overflow-hidden bg-gray-900 py-14">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <h1 className="text-6xl font-bold mb-10 text-white">الكورسات</h1>
         <h2 className="font-bold text-4xl bg-gray-700 bg-opacity-50 rounded-xl mb-4 text-white p-6">

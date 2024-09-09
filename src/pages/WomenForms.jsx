@@ -22,6 +22,7 @@ import {
 import Card from "../components/Card";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../routes";
+import AllAlerts from "../components/AllAlerts";
 
 const sortOptions = [
   { name: "رقم الاستمارة", href: "#", current: true },
@@ -296,8 +297,9 @@ function WomenForms() {
         </div>
       </Dialog>
 
-      <main className="mx-auto max-w-[1700px] px-6 sm:px-8 lg:px-10">
-        <div className="flex flex-col sm:flex-row items-center sm:items-baseline gap-8 justify-between border-b border-gray-200 pb-6 pt-12 md:pt-16 xl:pt-24">
+      <main className="mx-auto max-w-[1700px] px-6 sm:px-8 lg:px-10 pt-12 md:pt-16 xl:pt-24">
+        <AllAlerts />
+        <div className="flex flex-col sm:flex-row items-center sm:items-baseline gap-8 justify-between border-b border-gray-200 pb-6">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 text-center sm:text-right">
             استمارات النساء
           </h1>

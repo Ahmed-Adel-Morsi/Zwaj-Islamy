@@ -11,24 +11,24 @@ import Card from "../components/Card";
 
 function Landing() {
   return (
-    <div className="container py-16 px-6 mx-auto">
+    <div className="container py-7 xs:py-12 lg:py-16 px-3 xs:px-6 mx-auto">
       <div className="block md:flex items-center justify-center gap-8">
         <div className="w-full md:w-1/2 flex items-center justify-center">
           <div className="max-w-[550px] text-center">
-            <h1 className="font-bold text-5xl text-[#5f5f5f] mb-8">
+            <h1 className="font-bold text-[10vw] xs:text-5xl text-[#5f5f5f] mb-3 xs:mb-8">
               مبادرة الزواج <span>الإسلامى</span>
             </h1>
             <div>
-              <p className="text-xl font-bold text-[#a89d34]">
+              <p className="text-[5vw] xs:text-xl font-bold text-[#a89d34]">
                 مرحبا بكم فى موقع مبادرة الشيخ عبد الكريم محمود
               </p>
-              <p className="mt-5 leading-7 font-medium text-gray-600">
+              <p className="text-[4vw] xs:text-lg mt-3 xs:mt-5 xs:leading-7 font-medium text-gray-600">
                 نحن هنا لنقدم لكم طريقة سهلة ومبسطة لتأسيس حياة زوجية قائمة على
                 المبادئ الإسلامية الحقيقية بعيدًا عن التقاليد المرهقة مثل قائمة
                 المنقولات. تهدف مبادرتنا إلى تشجيع الشباب والفتيات على الزواج
                 بيسر وسهولة، مستندين إلى التفاهم والمودة وليس الأعباء المادية.
               </p>
-              <p className="leading-7 font-medium text-gray-600 mt-4">
+              <p className="text-[4vw] xs:text-lg xs:leading-7 font-medium text-gray-600 mt-2 xs:mt-4">
                 هدفنا هو تبسيط الأمور للزوجين وتسهيل بناء حياة جديدة على أساس من
                 الثقة والتفاهم. من خلال هذه المبادرة، نسعى لنشر قيم الزواج
                 الإسلامي الصحيح، حيث يعتمد الزواج على المبادئ الشرعية دون تكاليف
@@ -37,7 +37,7 @@ function Landing() {
             </div>
           </div>
         </div>
-        <div className="w-full md:w-1/2 mt-7 md:mt-0 flex items-center justify-center">
+        <div className="w-full md:w-1/2 mt-3 xs:mt-7 md:mt-0 flex items-center justify-center">
           <img
             src={homeVector}
             alt="zwaj"
@@ -51,13 +51,13 @@ function Landing() {
 
 function MobadraVideo() {
   return (
-    <div className="relative isolate overflow-hidden bg-gray-900 py-12 sm:py-16 lg:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
+    <div className="relative isolate overflow-hidden bg-gray-900 py-7 xs:py-12 sm:py-16 lg:py-24">
+      <div className="mx-auto max-w-7xl px-3 xs:px-6 lg:px-8 text-center">
         <div>
-          <h2 className="font-bold text-5xl text-white mb-5">
+          <h2 className="font-bold text-[10vw] xs:text-5xl text-white mb-2 xs:mb-5">
             يعنى إيه زواج إسلامى
           </h2>
-          <p className="text-xl font-medium text-yellow-400 mb-6">
+          <p className="text-[5vw] xs:text-xl font-medium text-yellow-400 mb-3 xs:mb-6">
             فيديو توضيحى
           </p>
           <div className="relative pt-[56.67%]">
@@ -117,16 +117,18 @@ function Forms() {
   }, []);
 
   return (
-    <div className="py-12 sm:py-16 lg:py-24 mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="container py-7 xs:py-12 lg:py-16 xl:py-24 mx-auto max-w-7xl px-3 xs:px-6 lg:px-8">
       <div className="text-center">
-        <h2 className="font-bold text-5xl mb-5">الاستمارات</h2>
-        <p className="mt-5 leading-8 font-medium text-gray-700">
+        <h2 className="font-bold text-[10vw] xs:text-5xl mb-2 xs:mb-5">
+          الاستمارات
+        </h2>
+        <p className="text-[5vw] xs:text-xl leading-8 font-medium text-gray-700">
           تصفح جميع استمارات الزواج من هنا
         </p>
       </div>
-      <div className="swiper select-none mx-auto max-w-2xl px-4 py-12 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
+      <div className="swiper select-none mx-auto max-w-2xl px-3 xs:px-4 py-7 xs:py-12 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Products</h2>
-        <div className="swiper-wrapper cursor-grab active:cursor-grabbing">
+        <div className="swiper-wrapper">
           <Card />
           <Card />
           <Card />
@@ -144,11 +146,13 @@ function Forms() {
 
 function DownloadApp() {
   return (
-    <div className="bg-gray-900 py-12 sm:py-16 lg:py-24 mx-auto w-[90%] max-w-7xl rounded-xl">
-      <div className=" px-6 lg:px-8 text-center">
+    <div className="bg-gray-900 py-7 xs:py-12 sm:py-16 lg:py-24 mx-auto w-[90%] max-w-7xl rounded-xl">
+      <div className="px-3 xs:px-6 lg:px-8 text-center">
         <div>
-          <h2 className="font-bold text-5xl text-white mb-5">تحميل التطبيق</h2>
-          <p className="text-xl font-medium text-yellow-400 mb-10">
+          <h2 className="font-bold text-[10vw] xs:text-5xl text-white mb-3 xs:mb-5">
+            تحميل التطبيق
+          </h2>
+          <p className="text-[5vw] xs:text-xl font-medium text-yellow-400 mb-5 xs:mb-10">
             يمكنك تحميل تطبيق زواج اسلامى من خلال جوجل بلاى وأبل ستور
           </p>
           <div className="flex flex-col sm:flex-row sm:gap-3 justify-center items-center">
@@ -189,14 +193,16 @@ function ShekhMahmoud() {
             src={abdelkareem}
             alt=""
           />
-          <div className="mt-4 text-base">
-            <div className="font-bold text-2xl">الشيخ: عبد الكريم محمود</div>
-            <div className="text-gray-400 mt-2 font-medium">
+          <div className="mt-2 xs:mt-4 text-base">
+            <div className="font-bold text-[6vw] xs:text-2xl">
+              الشيخ: عبد الكريم محمود
+            </div>
+            <div className="text-[4vw] xs:text-lg text-gray-400 xs:mt-2 font-medium">
               مؤسس وصاحب المبادرة
             </div>
           </div>
         </figcaption>
-        <p className="mt-5 leading-8 font-medium text-gray-700">
+        <p className="text-[4vw] xs:text-base mt-3 xs:mt-5 xs:leading-8 font-medium text-gray-700">
           إخلاء مسؤلية أمام الله وأمامكم : اولاً انا مش مسؤول عن اي حد سواء من
           الشباب العرسان او اولياء الامور ،انا كل اللي بحاول اعمله أن ربنا
           يستخدمني وينفع بي وأقدر اوصل الناس اللي عايزه تيسر الزواج ببعض ( طبعاً

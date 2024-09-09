@@ -44,7 +44,7 @@ function Card({ imgUrl }) {
         </div>
       </div>
       <hr className="w-1/2 mx-auto my-3" />
-      <p className="text-xs text-center font-medium w-full text-gray-700 text-nowrap text-ellipsis overflow-hidden">
+      <p className="text-xs text-center font-medium w-full text-gray-700 truncate">
         رجل طيب وحنين، بشوش وذو خلق، متعلم وابن ناس، ويعتمد عليه في تحمل
         المسؤولية.{" "}
       </p>
