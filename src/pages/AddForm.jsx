@@ -2,6 +2,7 @@ import { useState } from "react";
 import FirstPage from "../components/bride/FirstPage";
 import SecondPage from "../components/bride/SecondPage";
 import ThirdPage from "../components/bride/ThirdPage";
+import { ChevronDownIcon } from "@heroicons/react/16/solid";
 
 const pages = [
   { id: 0, title: "بيانات العروسة", component: <FirstPage /> },

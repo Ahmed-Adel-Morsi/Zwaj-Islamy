@@ -22,24 +22,28 @@ const statusOptions = [
 ];
 const qualificationOptions = [
   {
-    id: "noQualification",
-    name: "بدون مؤهل",
-  },
-  {
     id: "doctor",
-    name: "دكتور / دكتورة",
+    name: "دكتورة",
   },
   {
     id: "engineer",
-    name: "مهندس / مهندسة",
+    name: "مهندسة",
   },
   {
     id: "teacher",
-    name: "معلم / معلمة",
+    name: "مُعلمة",
+  },
+  {
+    id: "highQualification",
+    name: "مؤهل عالى",
   },
   {
     id: "graduate",
-    name: "خريج / خريجة",
+    name: "خريجة",
+  },
+  {
+    id: "diploma",
+    name: "دبلوم",
   },
   {
     id: "intermediate",
@@ -54,8 +58,8 @@ const qualificationOptions = [
     name: "شهادة ابتدائية",
   },
   {
-    id: "highQualification",
-    name: "مؤهل عالى",
+    id: "noQualification",
+    name: "بدون مؤهل",
   },
 ];
 const skinColorOptions = [

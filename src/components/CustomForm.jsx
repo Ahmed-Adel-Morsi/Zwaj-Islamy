@@ -34,6 +34,7 @@ export function CustomInput({
   fullWidth,
   min,
   max,
+  placeholder,
   disabled,
 }) {
   return (
@@ -49,6 +50,7 @@ export function CustomInput({
           autoComplete={autoComplete || "off"}
           min={min}
           max={max}
+          placeholder={placeholder}
           disabled={disabled}
           className="disabled:cursor-not-allowed block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
         />
@@ -106,7 +108,7 @@ export function CustomCheckbox({ label, values, onChange, options }) {
     onChange({ ...values, [id]: !values[id] });
   };
   return (
-    <div className="col-span-2">
+    <div className="sm:col-span-2">
       <CustomLabel title={label} />
       <div className="mt-2.5 grid grid-cols-4 gap-2">
         {options.map((option) => (
@@ -127,14 +129,14 @@ export function CustomCheckbox({ label, values, onChange, options }) {
   );
 }
 
-export function CustomRadio({ label, value, onChange }) {
+export function CustomRadio({ label, value, onChange, fullWidth }) {
   const radioOptions = [
     { name: "yes", label: "نعم" },
     { name: "no", label: "لا" },
   ];
 
   return (
-    <div>
+    <div className={fullWidth ? "sm:col-span-2" : undefined}>
       <CustomLabel title={label} />
       <RadioGroup
         by="name"
@@ -156,6 +158,40 @@ export function CustomRadio({ label, value, onChange }) {
           </Radio>
         ))}
       </RadioGroup>
+    </div>
+  );
+}
+
+export function CustomRange({ label, value, onChange }) {
+  const changeHandler = (e) => {
+    onChange((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  return (
+    <div>
+      <CustomLabel title={label} />
+      <div className="mt-2.5 w-full flex flex-col xs:flex-row gap-2">
+        <input
+          type="number"
+          name="from"
+          id="from"
+          value={value.from}
+          onChange={changeHandler}
+          autoComplete="off"
+          placeholder="من"
+          className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+        />
+        <input
+          type="number"
+          name="to"
+          id="to"
+          value={value.to}
+          onChange={changeHandler}
+          autoComplete="off"
+          placeholder="إلى"
+          className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+        />
+      </div>
     </div>
   );
 }

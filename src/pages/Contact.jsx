@@ -1,3 +1,5 @@
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
+
 function Contact() {
   return (
     <div className="bg-white px-6 py-12 sm:py-16 lg:px-8">
@@ -173,14 +175,7 @@ function Contact() {
             href="mailto:support@zwaj-islamy.com"
             target="_blank"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 48 48"
-              className="h-7 w-7"
-              fill="#fff"
-            >
-              <path d="M4 12a4 4 0 0 1 4-4h32a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V12zm4 0v2.42l16 12.16 16-12.16V12H8zm0 24h32v-15.02L24.02 33.6a2 2 0 0 1-2.04 0L8 20.98V36z"></path>
-            </svg>
+            <EnvelopeIcon className="size-7" />
           </a>
         </div>
       </div>

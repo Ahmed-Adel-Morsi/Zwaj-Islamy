@@ -11,7 +11,7 @@ import Card from "../components/Card";
 
 function Landing() {
   return (
-    <div className="container py-7 xs:py-12 lg:py-16 px-3 xs:px-6 mx-auto">
+    <div className="py-7 xs:py-12 lg:py-16 px-3 xs:px-6 mx-auto">
       <div className="block md:flex items-center justify-center gap-8">
         <div className="w-full md:w-1/2 flex items-center justify-center">
           <div className="max-w-[550px] text-center">
