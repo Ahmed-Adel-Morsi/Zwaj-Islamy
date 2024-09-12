@@ -1,18 +1,35 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { CustomLabel } from "./CustomForm";
 import { PauseIcon, PlayIcon } from "@heroicons/react/20/solid";
 import { SpeakerXMarkIcon } from "@heroicons/react/16/solid";
+import getBlobDuration from "get-blob-duration";
 
-function MusicPlayer({ audio }) {
+function MusicPlayer({ url }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
-  const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const audioRef = useRef(new Audio(url));
+
+  const audio = audioRef.current;
+
+  const getDuration = async (url) => {
+    try {
+      const duration = await getBlobDuration(url);
+      setDuration(duration);
+    } catch (error) {
+      console.error("Failed to get duration:", error);
+    }
+  };
 
   const togglePlay = () => {
     setIsPlaying((prev) => {
       const newState = !prev;
-      newState ? audio.play() : audio.pause();
+      if (newState) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
       return newState;
     });
   };
@@ -37,25 +54,20 @@ function MusicPlayer({ audio }) {
   };
 
   useEffect(() => {
-    const handleMetadataLoad = () => {
-      // Ensure duration is updated after metadata is fully loaded
-      setDuration(audio.duration);
-    };
+    if (url) {
+      getDuration(url);
+      audio.src = url;
+    }
+  }, [url, audio]);
 
+  useEffect(() => {
     const handleTimeUpdate = () => setCurrentTime(audio.currentTime);
     const handleEnd = () => setIsPlaying(false);
 
-    audio.addEventListener("loadedmetadata", handleMetadataLoad);
     audio.addEventListener("timeupdate", handleTimeUpdate);
     audio.addEventListener("ended", handleEnd);
 
-    // Ensure metadata is ready and recheck the duration
-    if (audio.readyState >= 1) {
-      setDuration(audio.duration);
-    }
-
     return () => {
-      audio.removeEventListener("loadedmetadata", handleMetadataLoad);
       audio.removeEventListener("timeupdate", handleTimeUpdate);
       audio.removeEventListener("ended", handleEnd);
     };
@@ -89,6 +101,7 @@ function MusicPlayer({ audio }) {
             max={duration}
             value={currentTime}
             onChange={handleSeek}
+            step="0.001"
           />
           <div className="absolute w-full flex justify-between text-gray-400 text-sm">
             <span>{timeFormat(currentTime)}</span>
@@ -101,9 +114,13 @@ function MusicPlayer({ audio }) {
           <button
             type="button"
             className="text-gray-400 size-6"
-            onClick={() => (audio.muted = !audio.muted)}
+            onClick={() => {
+              console.log("Muted:", audio.muted);
+              audio.muted = !audio.muted;
+              console.log("Muted:", audio.muted);
+            }}
           >
-            {audio.muted || parseInt(volume) === 0 ? (
+            {audio.muted || volume === 0 ? (
               <SpeakerXMarkIcon className="size-full" />
             ) : (
               <svg

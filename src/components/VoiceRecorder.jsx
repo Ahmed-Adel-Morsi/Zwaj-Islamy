@@ -62,34 +62,14 @@ const VoiceRecorder = () => {
       background: "bg-emerald-500",
     },
   ];
-  const [audioElement, setAudioElement] = useState(null);
   const [currentMediaControl, setCurrentMediaControl] = useState(
     mediaControls[0]
   );
 
   useEffect(() => {
-    if (mediaBlobUrl) {
-      const audio = new Audio(mediaBlobUrl);
-      audio.preload = "metadata";
-
-      audio.onloadeddata = () => {
-        setAudioElement(audio);
-      };
-
-      audio.load();
-    }
-  }, [mediaBlobUrl]);
-
-  useEffect(() => {
     const current = mediaControls.find((control) => control.status === status);
     if (current) {
       setCurrentMediaControl(current);
-    } else {
-      setCurrentMediaControl({
-        title: "بدء التسجيل",
-        action: startRecording,
-        background: "bg-gray-600",
-      });
     }
   }, [status]);
 
@@ -134,18 +114,9 @@ const VoiceRecorder = () => {
           )}
         </div>
       </div>
-      {status === "stopped" && audioElement && (
-        <MusicPlayer audio={audioElement} />
+      {status === "stopped" && mediaBlobUrl && (
+        <MusicPlayer url={mediaBlobUrl} />
       )}
-      {/* <div className="sm:col-span-2">
-        <CustomLabel title={status} />
-        <audio
-          controls
-          src={mediaBlobUrl}
-          preload="auto"
-          className="w-full mt-2.5"
-        />
-      </div> */}
     </>
   );
 };
