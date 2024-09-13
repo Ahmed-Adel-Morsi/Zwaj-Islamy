@@ -18,7 +18,7 @@ function ThirdPage() {
           className={`border-0 ring-1 ring-inset ring-gray-300 rounded-md transition`}
           open
         >
-          <summary className="cursor-pointer leading-6 font-semibold text-sm select-none px-3.5 py-2 text-gray-900">
+          <summary className="cursor-pointer hover:bg-black/5 leading-6 font-semibold text-sm select-none px-3.5 py-2 text-gray-900">
             شروط المبادرة
           </summary>
           <div className="font-medium text-sm leading-7 px-5 pb-2">

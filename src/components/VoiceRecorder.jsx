@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useReactMediaRecorder } from "react-media-recorder";
 import MusicPlayer from "./MusicPlayer";
-import { CustomLabel } from "./CustomForm";
 import {
   ArrowPathIcon,
   MicrophoneIcon,
@@ -76,14 +75,14 @@ const VoiceRecorder = () => {
   return (
     <>
       <div className="sm:col-span-2">
-        <CustomLabel title="تسجيل صوتي بموافقه الوالد لا يتخطي 15 ثانية" />
+        <label className="label">تسجيل صوتي بموافقه الوالد لا يتخطي 15 ثانية</label>
         <p className="text-xs font-medium leading-5 text-gray-600">
           ( انا والد العروسه .. اوافق علي زواجها بدون قايمه )
         </p>
         <div className="flex flex-col md:flex-row gap-2 mt-2.5">
           <button
             type="button"
-            className={`disabled:cursor-not-allowed flex justify-center items-center gap-2 px-3.5 py-2 rounded text-sm/6 font-semibold border w-full hover:opacity-95 disabled:hover:opacity-100 grow text-white ${currentMediaControl.background}`}
+            className={`disabled:cursor-not-allowed flex-center gap-2 px-3.5 py-2 rounded text-sm/6 font-semibold border w-full hover:opacity-95 disabled:hover:opacity-100 grow text-white ${currentMediaControl.background}`}
             onClick={currentMediaControl.action}
             disabled={status === "recording" || status === "acquiring_media"}
           >
@@ -94,7 +93,7 @@ const VoiceRecorder = () => {
             <>
               <button
                 type="button"
-                className="flex justify-center items-center gap-2 px-3.5 py-2 rounded border md:w-1/3 bg-orange-700 text-white hover:opacity-95"
+                className="flex-center gap-2 px-3.5 py-2 rounded border md:w-1/3 bg-orange-700 text-white hover:opacity-95"
                 onClick={pauseRecording}
               >
                 <PauseIcon className="size-4" />
@@ -105,7 +104,7 @@ const VoiceRecorder = () => {
           {["recording", "paused"].includes(status) && (
             <button
               type="button"
-              className="flex justify-center items-center gap-2 px-3.5 py-2 rounded border md:w-1/3 bg-black text-white hover:bg-black/90"
+              className="flex-center gap-2 px-3.5 py-2 rounded border md:w-1/3 bg-black text-white hover:bg-black/90"
               onClick={stopRecording}
             >
               <StopIcon className="size-4" />

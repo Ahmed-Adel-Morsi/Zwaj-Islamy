@@ -37,7 +37,7 @@ function Navbar() {
 
   return (
     <nav className="bg-gray-800">
-      <div className="h-16 mx-auto sm:px-6 px-2 lg:px-8 max-w-7xl flex flex-1 items-center justify-evenly sm:justify-between">
+      <div className="h-16 mx-auto sm:px-6 px-2 lg:px-8 max-w-7xl flex flex-1 items-center justify-between sm:justify-between">
         <div className="flex">
           {/* Logo */}
           <Link to={ROUTES.HOME} className="flex flex-shrink-0 items-center">

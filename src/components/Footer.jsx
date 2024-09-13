@@ -5,7 +5,7 @@ function Footer() {
   let date = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-800 h-16 flex justify-center items-center">
+    <footer className="bg-gray-800 h-16 flex-center mb-[48px] xs:mb-[72px] sm:mb-0">
       <div className="mx-auto max-w-7xl text-[4vw] xs:text-base px-6 lg:px-8 text-center text-white font-medium">
         حقوق الطبع محفوظة لموقع{" "}
         <Link

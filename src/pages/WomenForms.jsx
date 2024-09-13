@@ -208,7 +208,7 @@ function WomenForms() {
               <button
                 type="button"
                 onClick={() => setMobileFiltersOpen(false)}
-                className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
+                className="-mr-2 flex-center h-10 w-10 rounded-md bg-white p-2 text-gray-400"
               >
                 <span className="sr-only">Close menu</span>
                 <XMarkIcon aria-hidden="true" className="h-6 w-6" />

@@ -12,14 +12,14 @@ import Card from "../components/Card";
 function Landing() {
   return (
     <div className="py-7 xs:py-12 lg:py-16 px-3 xs:px-6 mx-auto">
-      <div className="block md:flex items-center justify-center gap-8">
-        <div className="w-full md:w-1/2 flex items-center justify-center">
+      <div className="block md:flex-center gap-8">
+        <div className="w-full md:w-1/2 flex-center">
           <div className="max-w-[550px] text-center">
-            <h1 className="font-bold text-[10vw] xs:text-5xl text-[#5f5f5f] mb-3 xs:mb-8">
+            <h1 className="section-header text-[#5f5f5f]">
               مبادرة الزواج <span>الإسلامى</span>
             </h1>
-            <div>
-              <p className="text-[5vw] xs:text-xl font-bold text-[#a89d34]">
+            <div className="xs:mt-10">
+              <p className="section-p text-[#a89d34]">
                 مرحبا بكم فى موقع مبادرة الشيخ عبد الكريم محمود
               </p>
               <p className="text-[4vw] xs:text-lg mt-3 xs:mt-5 xs:leading-7 font-medium text-gray-600">
@@ -37,7 +37,7 @@ function Landing() {
             </div>
           </div>
         </div>
-        <div className="w-full md:w-1/2 mt-3 xs:mt-7 md:mt-0 flex items-center justify-center">
+        <div className="w-full md:w-1/2 mt-3 xs:mt-7 md:mt-0 flex-center">
           <img
             src={homeVector}
             alt="zwaj"
@@ -54,12 +54,8 @@ function MobadraVideo() {
     <div className="relative isolate overflow-hidden bg-gray-900 py-7 xs:py-12 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-3 xs:px-6 lg:px-8 text-center">
         <div>
-          <h2 className="font-bold text-[10vw] xs:text-5xl text-white mb-2 xs:mb-5">
-            يعنى إيه زواج إسلامى
-          </h2>
-          <p className="text-[5vw] xs:text-xl font-medium text-yellow-400 mb-3 xs:mb-6">
-            فيديو توضيحى
-          </p>
+          <h2 className="section-header text-white">يعنى إيه زواج إسلامى</h2>
+          <p className="section-p text-yellow-400">فيديو توضيحى</p>
           <div className="relative pt-[56.67%]">
             <iframe
               src="https://player.vimeo.com/video/830357190?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
@@ -119,10 +115,8 @@ function Forms() {
   return (
     <div className="container py-7 xs:py-12 lg:py-16 xl:py-24 mx-auto max-w-7xl px-3 xs:px-6 lg:px-8">
       <div className="text-center">
-        <h2 className="font-bold text-[10vw] xs:text-5xl mb-2 xs:mb-5">
-          الاستمارات
-        </h2>
-        <p className="text-[5vw] xs:text-xl leading-8 font-medium text-gray-700">
+        <h2 className="section-header">الاستمارات</h2>
+        <p className="section-p text-gray-500">
           تصفح جميع استمارات الزواج من هنا
         </p>
       </div>
@@ -149,13 +143,11 @@ function DownloadApp() {
     <div className="bg-gray-900 py-7 xs:py-12 sm:py-16 lg:py-24 mx-auto w-[90%] max-w-7xl rounded-xl">
       <div className="px-3 xs:px-6 lg:px-8 text-center">
         <div>
-          <h2 className="font-bold text-[10vw] xs:text-5xl text-white mb-3 xs:mb-5">
-            تحميل التطبيق
-          </h2>
-          <p className="text-[5vw] xs:text-xl font-medium text-yellow-400 mb-5 xs:mb-10">
+          <h2 className="section-header text-white">تحميل التطبيق</h2>
+          <p className="section-p text-yellow-400">
             يمكنك تحميل تطبيق زواج اسلامى من خلال جوجل بلاى وأبل ستور
           </p>
-          <div className="flex flex-col sm:flex-row sm:gap-3 justify-center items-center">
+          <div className="flex-center flex-col sm:flex-row sm:gap-3">
             <a
               href="https://play.google.com/store/apps/details?id=com.zawaj.islamy"
               target="_blank"
@@ -194,12 +186,10 @@ function ShekhMahmoud() {
             alt=""
           />
           <div className="mt-2 xs:mt-4 text-base">
-            <div className="font-bold text-[6vw] xs:text-2xl">
+            <div className="font-bold text-[6vw] xs:text-3xl mb-2 xs:mb-3">
               الشيخ: عبد الكريم محمود
             </div>
-            <div className="text-[4vw] xs:text-lg text-gray-400 xs:mt-2 font-medium">
-              مؤسس وصاحب المبادرة
-            </div>
+            <div className="section-p text-gray-500">مؤسس وصاحب المبادرة</div>
           </div>
         </figcaption>
         <p className="text-[4vw] xs:text-base mt-3 xs:mt-5 xs:leading-8 font-medium text-gray-700">

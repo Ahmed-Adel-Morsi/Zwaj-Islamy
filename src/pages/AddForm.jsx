@@ -42,7 +42,7 @@ function AddForm() {
                 className={i === 0 ? "inline-flex items-center" : undefined}
                 aria-current={currentPage === page ? "page" : undefined}
               >
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-0">
+                <div className="flex-center flex-col sm:flex-row gap-1 sm:gap-0">
                   {i !== 0 && (
                     <svg
                       className="rtl:rotate-90 sm:rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"

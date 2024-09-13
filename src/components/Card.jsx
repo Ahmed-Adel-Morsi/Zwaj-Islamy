@@ -14,11 +14,11 @@ function Card({ imgUrl }) {
         className="h-28 w-28 mb-3 object-contain xs:object-cover object-center mx-auto rounded-full"
       />
       <div className="grid grid-cols-1 xs:grid-cols-2 gap-y-3 gap-x-5 w-fit mx-auto">
-        <div className="flex gap-1 justify-center items-center w-fit">
+        <div className="flex-center gap-1 w-fit">
           <img src={oldSvg} className="h-5 w-5 object-contain" alt="Old Svg" />
           <p className="text-sm font-medium text-gray-700">28 سنة</p>
         </div>
-        <div className="flex gap-1 justify-center items-center w-fit">
+        <div className="flex-center gap-1 w-fit">
           <img
             src={statusSvg}
             className="h-5 w-5 object-contain"
@@ -26,7 +26,7 @@ function Card({ imgUrl }) {
           />
           <p className="text-sm font-medium text-gray-700">أعزب</p>
         </div>
-        <div className="flex gap-1 justify-center items-center w-fit">
+        <div className="flex-center gap-1 w-fit">
           <img
             src={rulerSvg}
             className="h-5 w-5 object-contain"
@@ -34,7 +34,7 @@ function Card({ imgUrl }) {
           />
           <p className="text-sm font-medium text-gray-700">168 سم</p>
         </div>
-        <div className="flex gap-1 justify-center items-center w-fit">
+        <div className="flex-center gap-1 w-fit">
           <img
             src={locationSvg}
             className="h-5 w-5 object-contain"

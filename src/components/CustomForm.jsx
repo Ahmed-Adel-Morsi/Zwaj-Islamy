@@ -13,17 +13,6 @@ import {
   ChevronUpDownIcon,
 } from "@heroicons/react/20/solid";
 
-export function CustomLabel({ title, id }) {
-  return (
-    <label
-      htmlFor={id}
-      className="block text-sm font-semibold leading-6 text-gray-900"
-    >
-      {title}
-    </label>
-  );
-}
-
 export function CustomInput({
   type,
   id,
@@ -39,7 +28,9 @@ export function CustomInput({
 }) {
   return (
     <div className={fullWidth ? "sm:col-span-2" : undefined}>
-      <CustomLabel title={label} id={id} />
+      <label htmlFor={id} className="label">
+        {label}
+      </label>
       <div className="mt-2.5">
         <input
           type={type}
@@ -52,7 +43,7 @@ export function CustomInput({
           max={max}
           placeholder={placeholder}
           disabled={disabled}
-          className="disabled:cursor-not-allowed block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+          className="field"
         />
       </div>
     </div>
@@ -63,11 +54,9 @@ export function CustomDropdown({ label, options, value, onChange }) {
   return (
     <div>
       <Listbox value={value} onChange={onChange}>
-        <Label className="block text-sm font-medium leading-6 text-gray-900">
-          {label}
-        </Label>
+        <Label className="label">{label}</Label>
         <div className="relative mt-2.5">
-          <ListboxButton className="relative w-full cursor-pointer rounded-md bg-white py-2 pl-3 pr-5 text-right text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-black sm:text-sm sm:leading-6">
+          <ListboxButton className="relative text-right hover:bg-black/5 cursor-pointer w-full rounded-md bg-white py-2 pl-3 pr-5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-black sm:text-sm sm:leading-6">
             <span className="block truncate">{value.name}</span>
             <span className="pointer-events-none absolute inset-y-0 left-0 ml-3 flex items-center pr-2">
               <ChevronUpDownIcon
@@ -85,13 +74,13 @@ export function CustomDropdown({ label, options, value, onChange }) {
               <ListboxOption
                 key={option.id}
                 value={option}
-                className="group relative cursor-pointer select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-emerald-600 data-[focus]:text-white"
+                className="group relative cursor-pointer select-none py-2 pl-3 pr-5 text-gray-900 data-[focus]:bg-emerald-600 data-[focus]:text-white"
               >
                 <span className="block truncate font-medium group-data-[selected]:font-semibold">
                   {option.name}
                 </span>
 
-                <span className="absolute inset-y-0 right-0 flex items-center pr-3 text-emerald-600 group-data-[focus]:text-white [.group:not([data-selected])_&]:hidden">
+                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-emerald-600 group-data-[focus]:text-white [.group:not([data-selected])_&]:hidden">
                   <CheckIcon aria-hidden="true" className="h-4 w-4" />
                 </span>
               </ListboxOption>
@@ -109,7 +98,7 @@ export function CustomCheckbox({ label, values, onChange, options }) {
   };
   return (
     <div className="sm:col-span-2">
-      <CustomLabel title={label} />
+      <label className="label">{label}</label>
       <div className="mt-2.5 grid grid-cols-4 gap-2">
         {options.map((option) => (
           <div
@@ -137,7 +126,7 @@ export function CustomRadio({ label, value, onChange, fullWidth }) {
 
   return (
     <div className={fullWidth ? "sm:col-span-2" : undefined}>
-      <CustomLabel title={label} />
+      <label className="label">{label}</label>
       <RadioGroup
         by="name"
         value={value}
@@ -149,7 +138,7 @@ export function CustomRadio({ label, value, onChange, fullWidth }) {
           <Radio
             key={plan.name}
             value={plan}
-            className="w-full group relative flex cursor-pointer rounded-md border-0 px-3.5 py-2 text-gray-900 hover:bg-black/5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6 transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-white/10"
+            className="group field relative flex hover:bg-black/5 cursor-pointer transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-white/10"
           >
             <div className="flex w-full items-center justify-between">
               <p className="text-sm/6 font-semibold">{plan.label}</p>
@@ -169,7 +158,7 @@ export function CustomRange({ label, value, onChange }) {
 
   return (
     <div>
-      <CustomLabel title={label} />
+      <label className="label">{label}</label>
       <div className="mt-2.5 w-full flex flex-col xs:flex-row gap-2">
         <input
           type="number"
@@ -179,7 +168,7 @@ export function CustomRange({ label, value, onChange }) {
           onChange={changeHandler}
           autoComplete="off"
           placeholder="من"
-          className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+          className="field"
         />
         <input
           type="number"
@@ -189,7 +178,7 @@ export function CustomRange({ label, value, onChange }) {
           onChange={changeHandler}
           autoComplete="off"
           placeholder="إلى"
-          className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+          className="field"
         />
       </div>
     </div>
@@ -199,14 +188,16 @@ export function CustomRange({ label, value, onChange }) {
 export function CustomTextarea({ label, id, value, onChange }) {
   return (
     <div className="sm:col-span-2">
-      <CustomLabel title={label} id={id} />
+      <label className="label" htmlFor={id}>
+        {label}
+      </label>
       <div className="mt-2.5">
         <textarea
           name={id}
           id={id}
           rows="4"
           onChange={(e) => onChange(e.target.value)}
-          className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+          className="field"
           value={value}
         ></textarea>
       </div>

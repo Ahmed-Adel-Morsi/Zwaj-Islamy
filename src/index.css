@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .label {
+    @apply block text-sm font-semibold leading-6 text-gray-900;
+  }
+  .field {
+    @apply disabled:cursor-not-allowed block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6;
+  }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .section-header {
+    @apply font-bold text-[10vw] xs:text-4xl mb-2 xs:mb-4;
+  }
+  .section-p {
+    @apply text-[5vw] xs:text-xl leading-5 mb-4 xs:mb-8;
+  }
+}

@@ -44,7 +44,7 @@ function Forms() {
         </Link>
         <Link
           to={`${ROUTES.NEW_FROM}`}
-          className="col-span-2 w-full px-4 py-4 flex flex-col xs:flex-row justify-center items-center gap-1 bg-green-600 text-white transition border-2 rounded-lg hover:bg-green-700"
+          className="col-span-2 w-full px-4 py-4 flex-center flex-col xs:flex-row gap-1 bg-green-600 text-white transition border-2 rounded-lg hover:bg-green-700"
         >
           <PlusIcon className="hidden xs:inline size-6" />
           <p className="text-center font-medium">استمارة جديدة</p>
