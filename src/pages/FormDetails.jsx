@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import image from "../assets/women_profile_pic.png";
-import { useState } from "react";
-import { ClipboardIcon } from "@heroicons/react/16/solid";
+import { useState, useRef } from "react";
+import { ClipboardIcon, TrashIcon } from "@heroicons/react/16/solid";
 import {
   Dialog,
   DialogBackdrop,
@@ -16,7 +16,11 @@ function Section({ title, children, className }) {
     <div
       className={`rounded-lg bg-orange-600 bg-opacity-10 p-10 space-y-8 ${className}`}
     >
-      {title && <h3 className="section-header">{title}</h3>}
+      {title && (
+        <h3 className="font-bold text-[8vw] xs:text-3xl text-center">
+          {title}
+        </h3>
+      )}
       {children}
     </div>
   );
@@ -24,18 +28,24 @@ function Section({ title, children, className }) {
 
 function MasterSection() {
   const [showNumber, setShowNumber] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const phoneRef = useRef(null);
+
+  const copyHandler = () => {
+    navigator.clipboard.writeText(phoneRef.current.textContent);
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 3000);
+  };
 
   return (
-    <div className="w-full sm:w-[22rem] h-full shrink-0">
+    <div className="w-full sm:w-[22rem] h-full shrink-0 sm:sticky sm:top-10 sm:right-0">
       <Section className="h-full">
-        <img
-          src={image}
-          alt="women_profile_pic"
-          className="w-full rounded-full border-8 border-white"
-        />
+        <Image />
         <div className="text-center my-6">
-          <h3 className="text-4xl font-bold">الآنسة س</h3>
-          <p className="text-xl text-red-700 font-semibold mt-2">طبيبة</p>
+          <h3 className="text-3xl font-bold">الآنسة س</h3>
+          <p className="text-lg text-red-700 font-bold mt-2">طبيبة</p>
         </div>
         <div className="text-center mt-8 mb-6 space-y-3">
           <svg
@@ -45,7 +55,7 @@ function MasterSection() {
           >
             <path d="M288.32 49.87H183.19v210.26L288.32 155zM126.81 155V49.87H21.68v210.26z"></path>
           </svg>
-          <p className="text-gray-500 font-medium">
+          <p className="text-gray-500 font-semibold">
             الحمد على قدر من الجمال بشوشه متواضعه لا احب النفاق ولا الكذب وعلى
             قدر من الالتزام والاحتشام.
           </p>
@@ -141,35 +151,40 @@ function MasterSection() {
               </p>
             </div>
           </div>
-          <div className="mt-10 mx-auto text-center font-bold">
+          <div className="mt-10 mx-auto text-center font-bold text-[15px] tracking-wide">
             {showNumber ? (
-              <div className="flex flex-col xs:flex-row rounded bg-red-700 text-white cursor-pointer">
-                <button
-                  type="button"
-                  className="flex-center gap-2 p-4 hover:bg-black/5"
-                  title="نسخ الرقم"
-                  onClick={() => {
-                    navigator.clipboard.writeText("01012345678");
-                    alert("تم نسخ الرقم بنجاح");
-                  }}
-                >
-                  <ClipboardIcon className="size-5 text-white" />
-                  <span className="xs:hidden">نسخ الرقم</span>
-                </button>
-                <a
-                  href="tel:01012345678"
-                  className="grow flex-center hover:bg-black/5 p-4"
-                >
-                  01012345678
-                </a>
-              </div>
+              <>
+                <div className="flex flex-col xs:flex-row rounded bg-red-700 text-white cursor-pointer">
+                  <button
+                    type="button"
+                    className="flex-center gap-2 p-4 hover:bg-black/5"
+                    title="نسخ الرقم"
+                    onClick={copyHandler}
+                  >
+                    <ClipboardIcon className="size-5 text-white" />
+                    <span className="xs:hidden">نسخ الرقم</span>
+                  </button>
+                  <a
+                    href="tel:01012345678"
+                    className="grow flex-center hover:bg-black/5 p-4"
+                    ref={phoneRef}
+                  >
+                    01012345678
+                  </a>
+                </div>
+                {copied && (
+                  <p className="text-red-700 mt-2 font-semibold">
+                    تم نسخ الرقم بنجاح
+                  </p>
+                )}
+              </>
             ) : (
               <button
                 type="button"
                 className="rounded bg-red-700 text-white p-4 hover:bg-opacity-90"
                 onClick={() => setShowNumber(true)}
               >
-                إظهار رقم والى الأمر
+                إظهار رقم ولي الأمر
               </button>
             )}
           </div>
@@ -186,10 +201,11 @@ function Popup() {
     <>
       <button
         type="button"
-        className="p-4 rounded-lg font-bold text-white bg-red-700 hover:bg-red-800"
+        className="p-4 rounded-lg font-bold text-white bg-red-700 hover:bg-red-800 flex-center gap-2 mx-auto text-[15px] tracking-wide"
         onClick={() => setOpen(true)}
       >
-        حذف الاستمارة
+        <TrashIcon className="size-5" />
+        <span>حذف الاستمارة</span>
       </button>
       <Dialog open={open} onClose={setOpen} className="relative z-10">
         <DialogBackdrop
@@ -214,7 +230,7 @@ function Popup() {
                   <div className="mt-3 text-center sm:mr-4 sm:mt-0 sm:text-right">
                     <DialogTitle
                       as="h3"
-                      className="text-base font-semibold leading-6 text-gray-900"
+                      className="text-base font-medium leading-6 text-gray-900"
                     >
                       حذف الاستمارة
                     </DialogTitle>
@@ -234,7 +250,7 @@ function Popup() {
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:mr-3 sm:w-auto"
+                  className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-bold text-white shadow-sm hover:bg-red-500 sm:mr-3 sm:w-auto"
                 >
                   حذف
                 </button>
@@ -242,11 +258,43 @@ function Popup() {
                   type="button"
                   data-autofocus
                   onClick={() => setOpen(false)}
-                  className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                  className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-bold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
                 >
                   إلغاء
                 </button>
               </div>
+            </DialogPanel>
+          </div>
+        </div>
+      </Dialog>
+    </>
+  );
+}
+
+function Image() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <img
+        src={image}
+        alt="women_profile_pic"
+        className="w-full max-w-48 rounded-full border-8 border-white mx-auto cursor-pointer"
+        onClick={() => setOpen(true)}
+      />
+
+      <Dialog open={open} onClose={setOpen} className="relative z-10">
+        <DialogBackdrop
+          transition
+          className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
+        />
+        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+            <DialogPanel
+              transition
+              className="relative transform overflow-hidden transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
+            >
+              <img src={image} alt="women_profile_pic" className="w-full" />
             </DialogPanel>
           </div>
         </div>
@@ -260,9 +308,8 @@ function FormDetails() {
 
   return (
     <div className="grow w-full max-w-7xl mx-auto px-3 xs:px-6 lg:px-8 py-14">
-      <div className="flex justify-between">
-        <h2 className="section-header">تفاصيل إستمارة {formNumber}</h2>
-        <Popup />
+      <div className="border-b pb-4">
+        <h2 className="section-header">إستمارة {formNumber}</h2>
       </div>
       <div className="mt-10 flex flex-col sm:flex-row gap-8">
         <MasterSection />
@@ -289,7 +336,6 @@ function FormDetails() {
                 </li>
                 <li>
                   <span className="font-bold">الصلاة :</span> احافظ على الصلاة
-                  امراض او إعاقة
                 </li>
               </ul>
             </Section>
@@ -304,6 +350,10 @@ function FormDetails() {
                 <li>
                   <span className="font-bold">الحالة الإجماعية :</span> اعزب أو
                   متزوج أو أرمل
+                </li>
+                <li>
+                  <span className="font-bold">الأطفال :</span> بدون اطفال أو
+                  الأطفال فى حضانة والدتهم
                 </li>
                 <li>
                   <span className="font-bold">السكن :</span> تمليك أو ايجار
@@ -327,6 +377,9 @@ function FormDetails() {
                 خلاف مع اي فكر من الافكار الاخرى ملتزم بالسنة و يحب الدعوة الى
                 الله على طريقة الرسول صلى الله عليه و سلم.
               </p>
+            </Section>
+            <Section title="حذف الاستمارة">
+              <Popup />
             </Section>
           </div>
         </div>
