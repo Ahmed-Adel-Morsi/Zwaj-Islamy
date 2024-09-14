@@ -1,4 +1,4 @@
-import homeVector from "../assets/home-vector.jpg";
+import homeVector from "../assets/squared-logo.png";
 import abdelkareem from "../assets/abdelkareem.png";
 import googlePlayIcon from "../assets/googleplay.png";
 import appStoreIcon from "../assets/appstore.png";
@@ -8,18 +8,25 @@ import { Scrollbar } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import Card from "../components/Card";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../routes";
+import {
+  ArrowLongLeftIcon,
+  ChevronDoubleLeftIcon,
+} from "@heroicons/react/16/solid";
 
 function Landing() {
   return (
-    <div className="py-7 xs:py-12 lg:py-16 px-3 xs:px-6 mx-auto">
-      <div className="block md:flex-center gap-8">
-        <div className="w-full md:w-1/2 flex-center">
-          <div className="max-w-[550px] text-center">
-            <h1 className="section-header text-[#5f5f5f]">
-              مبادرة الزواج <span>الإسلامى</span>
+    <div className="max-w-7xl min-h-[calc(100vh-128px)] mx-auto pt-5 pb-16 px-3 xs:px-6 lg:px-8 flex flex-col justify-evenly gap-8">
+      <div className="block lg:flex-center gap-12">
+        <div className="lg:w-2/3 flex-center">
+          <div className="grow text-center lg:text-start">
+            <h1 className="text-[10vw] xs:text-5xl mb-2 xs:mb-4 text-black font-extrabold">
+              مبادرة <br />
+              <span className="text-main block mt-2">الزواج الإسلامى</span>
             </h1>
-            <div className="xs:mt-10">
-              <p className="section-p text-[#a89d34]">
+            <div className="xs:mt-12 text-gray-600">
+              <p className="section-p font-bold">
                 مرحبا بكم فى موقع مبادرة الشيخ عبد الكريم محمود
               </p>
               <p className="text-[4vw] xs:text-lg mt-3 xs:mt-5 xs:leading-7 font-medium text-gray-600">
@@ -35,14 +42,43 @@ function Landing() {
                 إضافية تثقل كاهل العائلات.
               </p>
             </div>
+            <div className="xs:mt-8 flex gap-6 justify-center lg:justify-start">
+              <Link
+                to={`${ROUTES.FORMS}/${ROUTES.NEW_FROM}`}
+                className="bg-main text-white font-semibold text-lg px-5 py-3 rounded-lg hover:bg-main-hov transition"
+              >
+                إستمارة جديدة
+              </Link>
+              <Link
+                to={ROUTES.FORMS}
+                className="flex-center gap-2 border border-main text-main-hov hover:bg-black/5 rounded-lg px-5 py-3 font-semibold text-lg transition"
+              >
+                إستمارات الزواج
+                <ArrowLongLeftIcon className="size-5" />
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="w-full md:w-1/2 mt-3 xs:mt-7 md:mt-0 flex-center">
+        <div className="w-full lg:w-1/3 mt-3 xs:mt-7 lg:mt-0 flex-center">
           <img
             src={homeVector}
             alt="zwaj"
             className="w-[400px] h-[400px] object-cover"
           />
+        </div>
+      </div>
+      <div className="w-full lg:w-3/4 mx-auto rounded-lg bg-main text-white flex flex-col sm:flex-row">
+        <div className="p-8 text-center grow">
+          <h3 className="text-3xl font-bold">2500+</h3>
+          <p className="mt-3 text-lg font-medium">الزيجات التي تمت</p>
+        </div>
+        <div className="p-8 text-center grow">
+          <h3 className="text-3xl font-bold">1500+</h3>
+          <p className="mt-3 text-lg font-medium">استمارات الرجال</p>
+        </div>
+        <div className="p-8 text-center grow">
+          <h3 className="text-3xl font-bold">2000+</h3>
+          <p className="mt-3 text-lg font-medium">استمارت النساء</p>
         </div>
       </div>
     </div>
@@ -120,8 +156,42 @@ function Forms() {
           تصفح جميع استمارات الزواج من هنا
         </p>
       </div>
-      <div className="swiper select-none mx-auto max-w-2xl px-3 xs:px-4 py-7 xs:py-12 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
-        <h2 className="sr-only">Products</h2>
+      <div className="mt-10 swiper select-none mx-auto max-w-2xl lg:max-w-7xl pb-10">
+        <div className="flex justify-between items-center">
+          <h3 className="text-3xl font-semibold mt-3 mb-6">إستمارات الرجال</h3>
+          <Link
+            to={`${ROUTES.FORMS}/${ROUTES.MEN}`}
+            className="flex items-center gap-2 font-medium text-lg text-main-hov hover:text-main hover:underline hover:underline-offset-8"
+          >
+            عرض الكل
+            <ChevronDoubleLeftIcon className="size-5" />
+          </Link>
+        </div>
+        <h2 className="sr-only">استمارات الرجال</h2>
+        <div className="swiper-wrapper">
+          <Card imgUrl="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" />
+          <Card imgUrl="https://images.pexels.com/photos/26150470/pexels-photo-26150470/free-photo-of-brunette-man-posing-wearing-black-suit-jacket-and-white-shirt-with-arms-crossed.jpeg?auto=compress&cs=tinysrgb&w=600" />
+          <Card imgUrl="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg" />
+          <Card imgUrl="https://images.pexels.com/photos/18362367/pexels-photo-18362367/free-photo-of-young-black-man-posing-on-black-background.jpeg?auto=compress&cs=tinysrgb&w=600" />
+          <Card imgUrl="https://images.pexels.com/photos/15866461/pexels-photo-15866461/free-photo-of-bearded-man-in-suit-posing-in-hall.jpeg?auto=compress&cs=tinysrgb&w=600" />
+          <Card imgUrl="https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg" />
+          <Card imgUrl="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" />
+          <Card imgUrl="https://images.pexels.com/photos/26150470/pexels-photo-26150470/free-photo-of-brunette-man-posing-wearing-black-suit-jacket-and-white-shirt-with-arms-crossed.jpeg?auto=compress&cs=tinysrgb&w=600" />
+        </div>
+        <div className="swiper-scrollbar cursor-grab active:cursor-grabbing !h-2 !w-1/2 !left-1/2 -translate-x-1/2"></div>
+      </div>
+      <div className="mt-10 swiper select-none mx-auto max-w-2xl lg:max-w-7xl pb-10">
+        <div className="flex justify-between items-center">
+          <h3 className="text-3xl font-semibold mt-3 mb-6">إستمارات النساء</h3>
+          <Link
+            to={`${ROUTES.FORMS}/${ROUTES.WOMEN}`}
+            className="flex items-center gap-2 font-medium text-lg text-main-hov hover:text-main hover:underline hover:underline-offset-8"
+          >
+            عرض الكل
+            <ChevronDoubleLeftIcon className="size-5" />
+          </Link>
+        </div>
+        <h2 className="sr-only">استمارات الرجال</h2>
         <div className="swiper-wrapper">
           <Card />
           <Card />

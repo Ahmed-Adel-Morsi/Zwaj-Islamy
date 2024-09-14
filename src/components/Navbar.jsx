@@ -36,41 +36,37 @@ function Navbar() {
   ];
 
   return (
-    <nav className="bg-gray-800">
-      <div className="h-16 mx-auto sm:px-6 px-2 lg:px-8 max-w-7xl flex flex-1 items-center justify-between sm:justify-between">
-        <div className="flex">
-          {/* Logo */}
-          <Link to={ROUTES.HOME} className="flex flex-shrink-0 items-center">
-            <img className="h-8 w-auto" src={logo} alt="الشركة" />
-          </Link>
-
-          {/* Navigation Links */}
-          <ol className="hidden sm:block sm:mr-6">
-            <li className="flex gap-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className={`rounded-md px-3 py-2 text-sm font-medium ${
-                    location.pathname === `/${link.to}`
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                  }`}
-                >
-                  {link.title}
-                </Link>
-              ))}
-            </li>
-          </ol>
-        </div>
-
+    <nav className="py-6">
+      <div className="h-20 mx-auto sm:px-6 px-2 lg:px-8 max-w-7xl flex flex-1 items-center justify-between sm:justify-between">
+        {/* Logo */}
         <Link
-          to={`${ROUTES.FORMS}/${ROUTES.NEW_FROM}`}
-          className="flex items-center text-sm font-medium bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700"
+          to={ROUTES.HOME}
+          className="flex gap-3 flex-shrink-0 items-center"
         >
-          <PlusIcon className="size-5" />
-          اضافة استمارة
+          <img className="h-20 w-auto" src={logo} alt="الشركة" />
+          <p className="font-extrabold text-2xl">
+            زواج <span className="text-main">إسلامى</span>
+          </p>
         </Link>
+
+        {/* Navigation Links */}
+        <ol className="hidden sm:block sm:mr-6">
+          <li className="flex gap-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`rounded-md px-3 py-2 text-lg font-semibold ${
+                  location.pathname === `/${link.to}`
+                    ? "text-main"
+                    : "text-[#535A56] hover:text-main"
+                }`}
+              >
+                {link.title}
+              </Link>
+            ))}
+          </li>
+        </ol>
       </div>
 
       {/* Mobile Menu */}

@@ -4,6 +4,7 @@ import oldSvg from "../svgs/old.svg";
 import statusSvg from "../svgs/status.svg";
 import locationSvg from "../svgs/location.svg";
 import { Link } from "react-router-dom";
+import { ROUTES } from "../routes";
 
 function Card({ imgUrl }) {
   return (
@@ -50,7 +51,11 @@ function Card({ imgUrl }) {
       </p>
       <hr className=" my-3" />
       <Link
-        to="1"
+        to={
+          imgUrl
+            ? `/${ROUTES.FORMS}/${ROUTES.MEN}/1`
+            : `/${ROUTES.FORMS}/${ROUTES.WOMEN}/1`
+        }
         className="block w-full rounded-md bg-emerald-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 transition duration-200 ease-in-out"
       >
         عرض التفاصيل

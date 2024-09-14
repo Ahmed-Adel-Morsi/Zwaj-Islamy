@@ -7,6 +7,10 @@ export default {
       fontFamily: {
         cairo: ["Cairo", "sans-serif"],
       },
+      colors: {
+        main: "#3C9379",
+        "main-hov": "#2f7d66",
+      },
     },
     screens: {
       xs: "350px",

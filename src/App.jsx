@@ -1,4 +1,4 @@
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -12,10 +12,22 @@ import Courses from "./pages/Courses";
 import NotFound from "./pages/NotFound";
 import MenForms from "./pages/MenForms";
 import WomenForms from "./pages/WomenForms";
+import { useEffect } from "react";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <main className="min-h-[calc(100vh-128px)] flex flex-col">
         <Routes>
