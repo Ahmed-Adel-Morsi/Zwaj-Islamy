@@ -29,7 +29,7 @@ function App() {
     <>
       <ScrollToTop />
       <Navbar />
-      <main className="min-h-[calc(100vh-128px)] flex flex-col">
+      <main className="min-h-[calc(100vh-81px-64px-1.5rem)] flex flex-col">
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.FORMS} element={<Outlet />}>

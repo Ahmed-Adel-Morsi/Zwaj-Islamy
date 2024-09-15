@@ -8,8 +8,8 @@ export default {
         cairo: ["Cairo", "sans-serif"],
       },
       colors: {
-        main: "#3C9379",
-        "main-hov": "#2f7d66",
+        main: "#19998f",
+        "main-hov": "#1aa09a",
       },
     },
     screens: {

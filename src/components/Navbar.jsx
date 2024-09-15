@@ -7,10 +7,9 @@ import {
   PlayIcon,
   RectangleStackIcon,
 } from "@heroicons/react/24/outline";
-import { PlusIcon } from "@heroicons/react/20/solid";
 
 function Navbar() {
-  const location = useLocation(); // Get current route
+  const location = useLocation();
 
   const navLinks = [
     {
@@ -36,27 +35,27 @@ function Navbar() {
   ];
 
   return (
-    <nav className="py-6">
-      <div className="h-20 mx-auto sm:px-6 px-2 lg:px-8 max-w-7xl flex flex-1 items-center justify-between sm:justify-between">
+    <nav className="sticky top-0 right-0 border-b bg-white z-20 mt-6">
+      <div className="h-20 mx-auto min-[660px]:px-6 px-2 lg:px-8 max-w-7xl flex flex-1 items-center justify-center min-[660px]:justify-between">
         {/* Logo */}
         <Link
           to={ROUTES.HOME}
           className="flex gap-3 flex-shrink-0 items-center"
         >
           <img className="h-20 w-auto" src={logo} alt="الشركة" />
-          <p className="font-extrabold text-2xl">
+          <p className="hidden min-[660px]:block font-extrabold text-2xl">
             زواج <span className="text-main">إسلامى</span>
           </p>
         </Link>
 
         {/* Navigation Links */}
-        <ol className="hidden sm:block sm:mr-6">
-          <li className="flex gap-2">
+        <ol className="hidden min-[660px]:block min-[660px]:mr-6">
+          <li className="flex md:gap-2 lg:gap-4">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`rounded-md px-3 py-2 text-lg font-semibold ${
+                className={`rounded-md p-2 text-lg font-semibold ${
                   location.pathname === `/${link.to}`
                     ? "text-main"
                     : "text-[#535A56] hover:text-main"
@@ -71,7 +70,7 @@ function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className="bg-white fixed z-10 bottom-0 shadow-2xl shadow-black w-full sm:hidden border-t border-gray-200"
+        className="bg-white fixed z-10 bottom-0 shadow-2xl shadow-black w-full min-[660px]:hidden border-t border-gray-200"
         id="mobile-menu"
       >
         <ul className="flex justify-between flex-nowrap">

@@ -14,10 +14,11 @@ import {
   ArrowLongLeftIcon,
   ChevronDoubleLeftIcon,
 } from "@heroicons/react/16/solid";
+import NumberCounter from "../components/NumberCounter";
 
 function Landing() {
   return (
-    <div className="max-w-7xl min-h-[calc(100vh-128px)] mx-auto pt-5 pb-16 px-3 xs:px-6 lg:px-8 flex flex-col justify-evenly gap-8">
+    <div className="max-w-7xl min-h-[calc(100vh-81px-1.5rem)] mx-auto pt-5 pb-16 px-3 xs:px-6 lg:px-8 flex flex-col justify-evenly gap-8">
       <div className="block lg:flex-center gap-12">
         <div className="lg:w-2/3 flex-center">
           <div className="grow text-center lg:text-start">
@@ -25,7 +26,7 @@ function Landing() {
               مبادرة <br />
               <span className="text-main block mt-2">الزواج الإسلامى</span>
             </h1>
-            <div className="xs:mt-12 text-gray-600">
+            <div className="xs:mt-16 mb-10 text-gray-600">
               <p className="section-p font-bold">
                 مرحبا بكم فى موقع مبادرة الشيخ عبد الكريم محمود
               </p>
@@ -42,7 +43,7 @@ function Landing() {
                 إضافية تثقل كاهل العائلات.
               </p>
             </div>
-            <div className="xs:mt-8 flex gap-6 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start">
               <Link
                 to={`${ROUTES.FORMS}/${ROUTES.NEW_FROM}`}
                 className="bg-main text-white font-semibold text-lg px-5 py-3 rounded-lg hover:bg-main-hov transition"
@@ -51,7 +52,7 @@ function Landing() {
               </Link>
               <Link
                 to={ROUTES.FORMS}
-                className="flex-center gap-2 border border-main text-main-hov hover:bg-black/5 rounded-lg px-5 py-3 font-semibold text-lg transition"
+                className="flex-center gap-2 border border-main text-main hover:bg-black/5 rounded-lg px-5 py-3 font-semibold text-lg transition"
               >
                 إستمارات الزواج
                 <ArrowLongLeftIcon className="size-5" />
@@ -63,22 +64,22 @@ function Landing() {
           <img
             src={homeVector}
             alt="zwaj"
-            className="w-[400px] h-[400px] object-cover"
+            className="xs:size-[400px] object-cover"
           />
         </div>
       </div>
       <div className="w-full lg:w-3/4 mx-auto rounded-lg bg-main text-white flex flex-col sm:flex-row">
-        <div className="p-8 text-center grow">
-          <h3 className="text-3xl font-bold">2500+</h3>
-          <p className="mt-3 text-lg font-medium">الزيجات التي تمت</p>
+        <div className="p-4 xs:p-8 text-center grow">
+          <NumberCounter end={2500} duration={5000} />
+          <p className="mt-3 xs:text-lg font-medium">الزيجات التي تمت</p>
         </div>
-        <div className="p-8 text-center grow">
-          <h3 className="text-3xl font-bold">1500+</h3>
-          <p className="mt-3 text-lg font-medium">استمارات الرجال</p>
+        <div className="p-4 xs:p-8 text-center grow">
+          <NumberCounter end={1500} duration={4000} />
+          <p className="mt-3 xs:text-lg font-medium">استمارات الرجال</p>
         </div>
-        <div className="p-8 text-center grow">
-          <h3 className="text-3xl font-bold">2000+</h3>
-          <p className="mt-3 text-lg font-medium">استمارت النساء</p>
+        <div className="p-4 xs:p-8 text-center grow">
+          <NumberCounter end={1000} />
+          <p className="mt-3 xs:text-lg font-medium">استمارات النساء</p>
         </div>
       </div>
     </div>
@@ -87,14 +88,14 @@ function Landing() {
 
 function MobadraVideo() {
   return (
-    <div className="relative isolate overflow-hidden bg-gray-900 py-7 xs:py-12 sm:py-16 lg:py-24">
+    <div className="bg-teal-900 py-7 xs:py-12 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-3 xs:px-6 lg:px-8 text-center">
         <div>
           <h2 className="section-header text-white">يعنى إيه زواج إسلامى</h2>
           <p className="section-p text-yellow-400">فيديو توضيحى</p>
           <div className="relative pt-[56.67%]">
             <iframe
-              src="https://player.vimeo.com/video/830357190?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+              src="https://player.vimeo.com/video/830357190?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&dnt=1"
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
               title="Intro"
               className="absolute h-full w-full top-0 left-0"
@@ -102,18 +103,6 @@ function MobadraVideo() {
           </div>
           <script src="https://player.vimeo.com/api/player.js"></script>
         </div>
-      </div>
-      <div
-        className="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6"
-        aria-hidden="true"
-      >
-        <div
-          className="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
-          style={{
-            clipPath:
-              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-          }}
-        ></div>
       </div>
     </div>
   );
@@ -157,11 +146,13 @@ function Forms() {
         </p>
       </div>
       <div className="mt-10 swiper select-none mx-auto max-w-2xl lg:max-w-7xl pb-10">
-        <div className="flex justify-between items-center">
-          <h3 className="text-3xl font-semibold mt-3 mb-6">إستمارات الرجال</h3>
+        <div className="flex flex-col min-[400px]:flex-row min-[400px]:justify-between items-center mb-6 min-[400px]:mb-0">
+          <h3 className="text-3xl font-semibold mt-3 mb-3 min-[400px]:mb-6 text-center">
+            إستمارات الرجال
+          </h3>
           <Link
             to={`${ROUTES.FORMS}/${ROUTES.MEN}`}
-            className="flex items-center gap-2 font-medium text-lg text-main-hov hover:text-main hover:underline hover:underline-offset-8"
+            className="flex items-center gap-2 font-medium text-lg text-main hover:text-main-hov hover:underline hover:underline-offset-8"
           >
             عرض الكل
             <ChevronDoubleLeftIcon className="size-5" />
@@ -181,11 +172,13 @@ function Forms() {
         <div className="swiper-scrollbar cursor-grab active:cursor-grabbing !h-2 !w-1/2 !left-1/2 -translate-x-1/2"></div>
       </div>
       <div className="mt-10 swiper select-none mx-auto max-w-2xl lg:max-w-7xl pb-10">
-        <div className="flex justify-between items-center">
-          <h3 className="text-3xl font-semibold mt-3 mb-6">إستمارات النساء</h3>
+        <div className="flex flex-col min-[400px]:flex-row min-[400px]:justify-between items-center mb-6 min-[400px]:mb-0">
+          <h3 className="text-3xl font-semibold mt-3 mb-3 min-[400px]:mb-6 text-center">
+            إستمارات النساء
+          </h3>
           <Link
             to={`${ROUTES.FORMS}/${ROUTES.WOMEN}`}
-            className="flex items-center gap-2 font-medium text-lg text-main-hov hover:text-main hover:underline hover:underline-offset-8"
+            className="flex items-center gap-2 font-medium text-lg text-main hover:text-main-hov hover:underline hover:underline-offset-8"
           >
             عرض الكل
             <ChevronDoubleLeftIcon className="size-5" />
@@ -210,34 +203,36 @@ function Forms() {
 
 function DownloadApp() {
   return (
-    <div className="bg-gray-900 py-7 xs:py-12 sm:py-16 lg:py-24 mx-auto w-[90%] max-w-7xl rounded-xl">
-      <div className="px-3 xs:px-6 lg:px-8 text-center">
-        <div>
-          <h2 className="section-header text-white">تحميل التطبيق</h2>
-          <p className="section-p text-yellow-400">
-            يمكنك تحميل تطبيق زواج اسلامى من خلال جوجل بلاى وأبل ستور
-          </p>
-          <div className="flex-center flex-col sm:flex-row sm:gap-3">
-            <a
-              href="https://play.google.com/store/apps/details?id=com.zawaj.islamy"
-              target="_blank"
-            >
-              <img
-                className="w-40 hover:scale-95 transition"
-                src={googlePlayIcon}
-                alt="download the app from google play"
-              />
-            </a>
-            <a
-              href="https://apps.apple.com/us/app/%D8%B2%D9%88%D8%A7%D8%AC-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A/id6450400305"
-              target="_blank"
-            >
-              <img
-                className="w-40 hover:scale-95 transition"
-                src={appStoreIcon}
-                alt="download the app from apple store"
-              />
-            </a>
+    <div className="container pb-7 xs:pb-12 lg:pb-16 xl:pb-24 mx-auto max-w-7xl px-3 xs:px-6 lg:px-8">
+      <div className="bg-teal-900 py-7 xs:py-12 sm:py-16 lg:py-24 max-w-7xl rounded-xl">
+        <div className="px-3 xs:px-6 lg:px-8 text-center">
+          <div>
+            <h2 className="section-header text-white">تحميل التطبيق</h2>
+            <p className="section-p text-yellow-400">
+              يمكنك تحميل تطبيق زواج اسلامى من خلال جوجل بلاى وأبل ستور
+            </p>
+            <div className="flex-center flex-col sm:flex-row sm:gap-3">
+              <a
+                href="https://play.google.com/store/apps/details?id=com.zawaj.islamy"
+                target="_blank"
+              >
+                <img
+                  className="w-40 hover:scale-95 transition"
+                  src={googlePlayIcon}
+                  alt="download the app from google play"
+                />
+              </a>
+              <a
+                href="https://apps.apple.com/us/app/%D8%B2%D9%88%D8%A7%D8%AC-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A/id6450400305"
+                target="_blank"
+              >
+                <img
+                  className="w-40 hover:scale-95 transition"
+                  src={appStoreIcon}
+                  alt="download the app from apple store"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -247,7 +242,7 @@ function DownloadApp() {
 
 function ShekhMahmoud() {
   return (
-    <div className="relative isolate overflow-hidden py-12 sm:py-16 lg:py-24">
+    <div className="relative isolate overflow-hidden pb-12 sm:pb-16 lg:pb-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <figcaption>
           <img
