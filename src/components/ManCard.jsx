@@ -1,4 +1,3 @@
-import womenProfilePic from "../assets/women_profile_pic.png";
 import rulerSvg from "../svgs/ruler.svg";
 import oldSvg from "../svgs/old.svg";
 import statusSvg from "../svgs/status.svg";
@@ -6,7 +5,7 @@ import locationSvg from "../svgs/location.svg";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../routes";
 
-function Card({ data }) {
+function ManCard({ data }) {
   if (data)
     return (
       <div className="swiper-slide border-2 rounded-md p-4 min-h-80">
@@ -20,8 +19,8 @@ function Card({ data }) {
           </span>
         )}
         <img
-          src={womenProfilePic}
-          alt="mulslim girl"
+          src={data.groomSpecifications.img}
+          alt="mulslim man"
           className="h-28 w-28 mb-3 object-contain xs:object-cover object-center mx-auto rounded-full"
         />
         <div className="grid grid-cols-1 xs:grid-cols-2 gap-y-3 gap-x-5 w-fit mx-auto">
@@ -32,7 +31,7 @@ function Card({ data }) {
               alt="Old Svg"
             />
             <p className="text-sm font-medium text-gray-700">
-              {data.brideSpecifications.age} سنة
+              {data.groomSpecifications.age} سنة
             </p>
           </div>
           <div className="flex-center gap-1 w-fit">
@@ -42,7 +41,7 @@ function Card({ data }) {
               alt="Status Svg"
             />
             <p className="text-sm font-medium text-gray-700">
-              {data.brideSpecifications.socialStatus}
+              {data.groomSpecifications.socialStatus}
             </p>
           </div>
           <div className="flex-center gap-1 w-fit">
@@ -52,7 +51,7 @@ function Card({ data }) {
               alt="Ruler Svg"
             />
             <p className="text-sm font-medium text-gray-700">
-              {data.brideSpecifications.height} سم
+              {data.groomSpecifications.height} سم
             </p>
           </div>
           <div className="flex-center gap-1 w-fit">
@@ -62,17 +61,17 @@ function Card({ data }) {
               alt="Location Svg"
             />
             <p className="text-sm font-medium text-gray-700">
-              {data.brideSpecifications.location}
+              {data.groomSpecifications.location}
             </p>
           </div>
         </div>
         <hr className="w-1/2 mx-auto my-3" />
         <p className="text-xs text-center font-medium w-full text-gray-700 truncate">
-          {data.brideSpecifications.description}
+          {data.groomSpecifications.description}
         </p>
         <hr className=" my-3" />
         <Link
-          to={`/${ROUTES.FORMS}/${ROUTES.WOMEN}/${data.code}`}
+          to={`/${ROUTES.FORMS}/${ROUTES.MEN}/${data.code}`}
           className="block w-full rounded-md bg-emerald-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 transition duration-200 ease-in-out"
         >
           عرض التفاصيل
@@ -81,4 +80,4 @@ function Card({ data }) {
     );
 }
 
-export default Card;
+export default ManCard;

@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import image from "../assets/women_profile_pic.png";
 import { useState, useRef, useEffect } from "react";
 import {
   ClipboardDocumentCheckIcon,
@@ -17,7 +16,7 @@ import {
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import { CustomInput, CustomRadio } from "../components/CustomForm";
 import toast from "react-hot-toast";
-import { womenFormData } from "../lib/womenFormData";
+import { menFormData } from "../lib/menFormData";
 
 function Section({ title, children, className }) {
   return (
@@ -36,19 +35,19 @@ function Section({ title, children, className }) {
   );
 }
 
-function Image() {
+function Image({ src }) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <img
-        src={image}
-        alt="women_profile_pic"
+        src={src}
+        alt="profile_pic"
         className="w-full max-w-48 rounded-full border-8 border-white mx-auto cursor-pointer"
         onClick={() => setOpen(true)}
       />
 
-      <Dialog open={open} onClose={setOpen} className="relative z-10">
+      <Dialog open={open} onClose={setOpen} className="relative z-50">
         <DialogBackdrop
           transition
           className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
@@ -59,7 +58,7 @@ function Image() {
               transition
               className="relative transform overflow-hidden transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
             >
-              <img src={image} alt="women_profile_pic" className="w-full" />
+              <img src={src} alt="profile_pic" className="w-full" />
             </DialogPanel>
           </div>
         </div>
@@ -84,11 +83,10 @@ function MasterSection({ specifications, suspended }) {
   return (
     <div className="w-full md:w-[22rem] h-full shrink-0 md:sticky md:top-28 md:right-0">
       <Section className="h-full">
-        <Image />
+        <Image src={specifications.img} />
         <div className="text-center my-6">
           <h3 className="text-[8vw] xs:text-3xl font-bold">
-            {specifications.socialStatus === "عزباء" ? "الآنسة" : "الأستاذة"}{" "}
-            {specifications.name[0]}
+            الأستاذ {specifications.name[0]}
           </h3>
           <p className="text-[5vw] xs:text-lg text-red-700 font-bold mt-2">
             {specifications.job}
@@ -240,7 +238,7 @@ function MasterSection({ specifications, suspended }) {
                   onClick={() => setShowNumber(true)}
                 >
                   <EyeIcon className="size-[5.5vw] xs:size-5" />
-                  إظهار رقم ولي الأمر
+                  إظهار رقم الهاتف
                 </button>
               )}
             </div>
@@ -425,14 +423,12 @@ function SuspendForm() {
   );
 }
 
-function FormDetails() {
+function MenFormDetails() {
   const { formNumber } = useParams();
   const [formData, setFormData] = useState(null);
 
   useEffect(() => {
-    const form = womenFormData.find(
-      (form) => form.code === parseInt(formNumber)
-    );
+    const form = menFormData.find((form) => form.code === parseInt(formNumber));
     if (form) setFormData(form);
   }, [formNumber]);
 
@@ -444,94 +440,94 @@ function FormDetails() {
       {formData && (
         <div className="mt-8 flex flex-col md:flex-row gap-8">
           <MasterSection
-            specifications={formData.brideSpecifications}
+            specifications={formData.groomSpecifications}
             suspended={formData.suspended}
           />
           <div className="grow w-full grid lg:grid-cols-2 gap-8">
             <div className="space-y-8">
-              <Section title="مواصفات العروسة">
+              <Section title="مواصفات العريس">
                 <ul className="space-y-3 text-gray-800 list-disc list-inside [&_li::marker]:text-red-700 text-[4.5vw] xs:text-base">
                   <li>
                     <span className="font-bold">اللون :</span>{" "}
-                    {formData.brideSpecifications.skinColor}
+                    {formData.groomSpecifications.skinColor}
                   </li>
                   <li>
                     <span className="font-bold">المؤهل :</span>{" "}
-                    {formData.brideSpecifications.qualification}
+                    {formData.groomSpecifications.qualification}
                   </li>
                   <li>
                     <span className="font-bold">الوظيفة :</span>{" "}
-                    {formData.brideSpecifications.job}
+                    {formData.groomSpecifications.job}
                   </li>
                   <li>
                     <span className="font-bold">الأطفال :</span>{" "}
-                    {formData.brideSpecifications.hasChildren
-                      ? `${formData.brideSpecifications.childrenNumber} أطفال`
+                    {formData.groomSpecifications.hasChildren
+                      ? `${formData.groomSpecifications.childrenNumber} أطفال`
                       : "بدون اطفال"}
                   </li>
                   <li>
                     <span className="font-bold">الحالة الصحية :</span>{" "}
-                    {formData.brideSpecifications.illnessOrDisability
-                      ? `اعانى من ${formData.brideSpecifications.healthStatus}`
+                    {formData.groomSpecifications.illnessOrDisability
+                      ? `اعانى من ${formData.groomSpecifications.healthStatus}`
                       : "لا اعانى من اي امراض او إعاقة"}
                   </li>
                   <li>
                     <span className="font-bold">الصلاة :</span>{" "}
-                    {formData.brideSpecifications.prayer
+                    {formData.groomSpecifications.prayer
                       ? "نعم احافظ على الصلاة"
                       : "لا احافظ على الصلاة"}
                   </li>
                 </ul>
               </Section>
-              <Section title="شروط العروسة">
+              <Section title="شروط العريس">
                 <ul className="space-y-3 text-gray-800 list-disc list-inside [&_li::marker]:text-red-700 text-[4.5vw] xs:text-base">
                   <li>
                     <span className="font-bold">المحافظة : </span>
-                    {formData.brideSpecifications.sameGovernment
+                    {formData.groomSpecifications.sameGovernment
                       ? "لا أقبل الانتقال لمحافظة أخرى"
                       : "أقبل الانتقال لمحافظة أخرى"}
                   </li>
                   <li>
                     <span className="font-bold">التعدد : </span>
-                    {formData.brideSpecifications.acceptPolygamy
+                    {formData.groomSpecifications.acceptPolygamy
                       ? "أقبل التعدد"
                       : "لا أقبل التعدد"}
                   </li>
-                  {formData.brideSpecifications.acceptPolygamy &&
-                    formData.brideSpecifications.polygamyConditions !== "" && (
+                  {formData.groomSpecifications.acceptPolygamy &&
+                    formData.groomSpecifications.polygamyConditions !== "" && (
                       <li>
                         <span className="font-bold">شروط التعدد : </span>
-                        {formData.brideSpecifications.polygamyConditions}
+                        {formData.groomSpecifications.polygamyConditions}
                       </li>
                     )}
                 </ul>
               </Section>
-              <Section title="المواصفات المطلوبة في العريس">
+              <Section title="المواصفات المطلوبة في العروسة">
                 <ul className="space-y-3 text-gray-800 list-disc list-inside [&_li::marker]:text-red-700 text-[4.5vw] xs:text-base">
                   <li>
                     <span className="font-bold">السن :</span> من{" "}
-                    {formData.groomRequirements.ageRange.from} الى{" "}
-                    {formData.groomRequirements.ageRange.to} سنة
+                    {formData.brideRequirements.ageRange.from} الى{" "}
+                    {formData.brideRequirements.ageRange.to} سنة
                   </li>
                   <li>
                     <span className="font-bold">المؤهل :</span>{" "}
-                    {formData.groomRequirements.qualification}
+                    {formData.brideRequirements.qualification}
                   </li>
                   <li>
                     <span className="font-bold">الحالة الإجماعية :</span>{" "}
-                    {formData.groomRequirements.maritalStatus.join(" أو ")}
+                    {formData.brideRequirements.maritalStatus.join(" أو ")}
                   </li>
                   <li>
                     <span className="font-bold">الأطفال :</span>{" "}
-                    {formData.groomRequirements.children.join(" أو ")}
+                    {formData.brideRequirements.children.join(" أو ")}
                   </li>
                   <li>
                     <span className="font-bold">السكن :</span>{" "}
-                    {formData.groomRequirements.housing}
+                    {formData.brideRequirements.housing}
                   </li>
                   <li>
                     <span className="font-bold">المنطقة :</span>{" "}
-                    {formData.groomRequirements.area}
+                    {formData.brideRequirements.area}
                   </li>
                 </ul>
               </Section>
@@ -539,12 +535,12 @@ function FormDetails() {
             <div className="space-y-8">
               <Section title="شروط آخرى">
                 <p className="text-gray-800 text-[4.5vw] xs:text-base">
-                  {formData.groomRequirements.otherConditions}
+                  {formData.brideRequirements.otherConditions}
                 </p>
               </Section>
               <Section title="ملاحظات اضافية">
                 <p className="text-gray-800 text-[4.5vw] xs:text-base">
-                  {formData.groomRequirements.additionalNotes}
+                  {formData.brideRequirements.additionalNotes}
                 </p>
               </Section>
               <Section title="إجراءات">
@@ -561,4 +557,4 @@ function FormDetails() {
   );
 }
 
-export default FormDetails;
+export default MenFormDetails;

@@ -20,10 +20,11 @@ import {
   PlusIcon,
   Squares2X2Icon,
 } from "@heroicons/react/20/solid";
-import Card from "../components/Card";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../routes";
 import AllAlerts from "../components/AllAlerts";
+import { menFormData } from "../lib/menFormData";
+import ManCard from "../components/ManCard";
 
 const sortOptions = [
   { name: "عشوائى", href: "#", current: true },
@@ -35,6 +36,14 @@ const sortOptions = [
 ];
 
 const filters = [
+  {
+    id: "form_status",
+    name: "حالة الاستمارة",
+    options: [
+      { value: "suspended", label: "معلقة", checked: false },
+      { value: "valid", label: "سارية", checked: false },
+    ],
+  },
   {
     id: "governorates",
     name: "المحافظات",
@@ -420,30 +429,9 @@ function MenForms() {
             {/* Product grid */}
             <div className="lg:col-span-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-                <Card imgUrl="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" />
-                <Card imgUrl="https://images.pexels.com/photos/26150470/pexels-photo-26150470/free-photo-of-brunette-man-posing-wearing-black-suit-jacket-and-white-shirt-with-arms-crossed.jpeg?auto=compress&cs=tinysrgb&w=600" />
-                <Card imgUrl="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg" />
-                <Card imgUrl="https://images.pexels.com/photos/18362367/pexels-photo-18362367/free-photo-of-young-black-man-posing-on-black-background.jpeg?auto=compress&cs=tinysrgb&w=600" />
-                <Card imgUrl="https://images.pexels.com/photos/15866461/pexels-photo-15866461/free-photo-of-bearded-man-in-suit-posing-in-hall.jpeg?auto=compress&cs=tinysrgb&w=600" />
-                <Card imgUrl="https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg" />
-                <Card imgUrl="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" />
-                <Card imgUrl="https://images.pexels.com/photos/26150470/pexels-photo-26150470/free-photo-of-brunette-man-posing-wearing-black-suit-jacket-and-white-shirt-with-arms-crossed.jpeg?auto=compress&cs=tinysrgb&w=600" />
-                <Card imgUrl="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg" />
-                <Card imgUrl="https://images.pexels.com/photos/18362367/pexels-photo-18362367/free-photo-of-young-black-man-posing-on-black-background.jpeg?auto=compress&cs=tinysrgb&w=600" />
-                <Card imgUrl="https://images.pexels.com/photos/15866461/pexels-photo-15866461/free-photo-of-bearded-man-in-suit-posing-in-hall.jpeg?auto=compress&cs=tinysrgb&w=600" />
-                <Card imgUrl="https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg" />
-                <Card imgUrl="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" />
-                <Card imgUrl="https://images.pexels.com/photos/26150470/pexels-photo-26150470/free-photo-of-brunette-man-posing-wearing-black-suit-jacket-and-white-shirt-with-arms-crossed.jpeg?auto=compress&cs=tinysrgb&w=600" />
-                <Card imgUrl="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg" />
-                <Card imgUrl="https://images.pexels.com/photos/18362367/pexels-photo-18362367/free-photo-of-young-black-man-posing-on-black-background.jpeg?auto=compress&cs=tinysrgb&w=600" />
-                <Card imgUrl="https://images.pexels.com/photos/15866461/pexels-photo-15866461/free-photo-of-bearded-man-in-suit-posing-in-hall.jpeg?auto=compress&cs=tinysrgb&w=600" />
-                <Card imgUrl="https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg" />
-                <Card imgUrl="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" />
-                <Card imgUrl="https://images.pexels.com/photos/26150470/pexels-photo-26150470/free-photo-of-brunette-man-posing-wearing-black-suit-jacket-and-white-shirt-with-arms-crossed.jpeg?auto=compress&cs=tinysrgb&w=600" />
-                <Card imgUrl="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg" />
-                <Card imgUrl="https://images.pexels.com/photos/18362367/pexels-photo-18362367/free-photo-of-young-black-man-posing-on-black-background.jpeg?auto=compress&cs=tinysrgb&w=600" />
-                <Card imgUrl="https://images.pexels.com/photos/15866461/pexels-photo-15866461/free-photo-of-bearded-man-in-suit-posing-in-hall.jpeg?auto=compress&cs=tinysrgb&w=600" />
-                <Card imgUrl="https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg" />
+                {menFormData.map((form) => (
+                  <ManCard key={form.code} data={form} />
+                ))}
               </div>
             </div>
           </div>

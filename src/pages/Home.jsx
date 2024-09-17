@@ -15,6 +15,9 @@ import {
   ChevronDoubleLeftIcon,
 } from "@heroicons/react/16/solid";
 import NumberCounter from "../components/NumberCounter";
+import { womenFormData } from "../lib/womenFormData";
+import { menFormData } from "../lib/menFormData";
+import ManCard from "../components/ManCard";
 
 function Landing() {
   return (
@@ -108,6 +111,58 @@ function MobadraVideo() {
   );
 }
 
+function SwiperSection({ children, title, routes }) {
+  useEffect(() => {
+    new Swiper(".swiper", {
+      modules: [Scrollbar],
+      speed: 400,
+      slidesPerView: 1.25,
+      spaceBetween: 15,
+      grabCursor: true,
+      scrollbar: {
+        el: ".swiper-scrollbar",
+        draggable: true,
+      },
+      breakpoints: {
+        550: {
+          slidesPerView: 2.25,
+          spaceBetween: 15,
+        },
+        1024: {
+          slidesPerView: 3.25,
+          spaceBetween: 20,
+        },
+        1280: {
+          slidesPerView: 4.25,
+          spaceBetween: 30,
+        },
+      },
+    });
+  }, []);
+
+  return (
+    <div className="mt-10">
+      <div className="mt-10 flex flex-col min-[400px]:flex-row min-[400px]:justify-between items-center mb-6 min-[400px]:mb-0">
+        <h3 className="text-3xl font-semibold mt-3 mb-3 min-[400px]:mb-6 text-center">
+          {title}
+        </h3>
+        <Link
+          to={routes}
+          className="flex items-center gap-2 font-medium text-lg text-main hover:text-main-hov hover:underline hover:underline-offset-8"
+        >
+          عرض الكل
+          <ChevronDoubleLeftIcon className="size-5" />
+        </Link>
+      </div>
+      <div className="swiper select-none mx-auto max-w-2xl lg:max-w-7xl pb-10">
+        <h2 className="sr-only">{title}</h2>
+        <div className="swiper-wrapper">{children}</div>
+        <div className="swiper-scrollbar cursor-grab active:cursor-grabbing !h-2 !w-1/2 !left-1/2 -translate-x-1/2"></div>
+      </div>
+    </div>
+  );
+}
+
 function Forms() {
   useEffect(() => {
     new Swiper(".swiper", {
@@ -145,58 +200,22 @@ function Forms() {
           تصفح جميع استمارات الزواج من هنا
         </p>
       </div>
-      <div className="mt-10 swiper select-none mx-auto max-w-2xl lg:max-w-7xl pb-10">
-        <div className="flex flex-col min-[400px]:flex-row min-[400px]:justify-between items-center mb-6 min-[400px]:mb-0">
-          <h3 className="text-3xl font-semibold mt-3 mb-3 min-[400px]:mb-6 text-center">
-            إستمارات الرجال
-          </h3>
-          <Link
-            to={`${ROUTES.FORMS}/${ROUTES.MEN}`}
-            className="flex items-center gap-2 font-medium text-lg text-main hover:text-main-hov hover:underline hover:underline-offset-8"
-          >
-            عرض الكل
-            <ChevronDoubleLeftIcon className="size-5" />
-          </Link>
-        </div>
-        <h2 className="sr-only">استمارات الرجال</h2>
-        <div className="swiper-wrapper">
-          <Card imgUrl="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" />
-          <Card imgUrl="https://images.pexels.com/photos/26150470/pexels-photo-26150470/free-photo-of-brunette-man-posing-wearing-black-suit-jacket-and-white-shirt-with-arms-crossed.jpeg?auto=compress&cs=tinysrgb&w=600" />
-          <Card imgUrl="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg" />
-          <Card imgUrl="https://images.pexels.com/photos/18362367/pexels-photo-18362367/free-photo-of-young-black-man-posing-on-black-background.jpeg?auto=compress&cs=tinysrgb&w=600" />
-          <Card imgUrl="https://images.pexels.com/photos/15866461/pexels-photo-15866461/free-photo-of-bearded-man-in-suit-posing-in-hall.jpeg?auto=compress&cs=tinysrgb&w=600" />
-          <Card imgUrl="https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg" />
-          <Card imgUrl="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" />
-          <Card imgUrl="https://images.pexels.com/photos/26150470/pexels-photo-26150470/free-photo-of-brunette-man-posing-wearing-black-suit-jacket-and-white-shirt-with-arms-crossed.jpeg?auto=compress&cs=tinysrgb&w=600" />
-        </div>
-        <div className="swiper-scrollbar cursor-grab active:cursor-grabbing !h-2 !w-1/2 !left-1/2 -translate-x-1/2"></div>
-      </div>
-      <div className="mt-10 swiper select-none mx-auto max-w-2xl lg:max-w-7xl pb-10">
-        <div className="flex flex-col min-[400px]:flex-row min-[400px]:justify-between items-center mb-6 min-[400px]:mb-0">
-          <h3 className="text-3xl font-semibold mt-3 mb-3 min-[400px]:mb-6 text-center">
-            إستمارات النساء
-          </h3>
-          <Link
-            to={`${ROUTES.FORMS}/${ROUTES.WOMEN}`}
-            className="flex items-center gap-2 font-medium text-lg text-main hover:text-main-hov hover:underline hover:underline-offset-8"
-          >
-            عرض الكل
-            <ChevronDoubleLeftIcon className="size-5" />
-          </Link>
-        </div>
-        <h2 className="sr-only">استمارات الرجال</h2>
-        <div className="swiper-wrapper">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </div>
-        <div className="swiper-scrollbar cursor-grab active:cursor-grabbing !h-2 !w-1/2 !left-1/2 -translate-x-1/2"></div>
-      </div>
+      <SwiperSection
+        title="إستمارات الرجال"
+        routes={`${ROUTES.FORMS}/${ROUTES.MEN}`}
+      >
+        {menFormData.map((form) => (
+          <ManCard key={form.code} data={form} />
+        ))}
+      </SwiperSection>
+      <SwiperSection
+        title="إستمارات النساء"
+        routes={`${ROUTES.FORMS}/${ROUTES.WOMEN}`}
+      >
+        {womenFormData.map((form) => (
+          <Card key={form.code} data={form} />
+        ))}
+      </SwiperSection>
     </div>
   );
 }

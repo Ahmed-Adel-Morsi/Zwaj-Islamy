@@ -13,6 +13,8 @@ import NotFound from "./pages/NotFound";
 import MenForms from "./pages/MenForms";
 import WomenForms from "./pages/WomenForms";
 import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
+import MenFormDetails from "./pages/MenFormDetails";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -37,7 +39,7 @@ function App() {
             <Route path={ROUTES.NEW_FROM} element={<AddForm />} />
             <Route path={ROUTES.MEN} element={<Outlet />}>
               <Route path="" element={<MenForms />} />
-              <Route path={ROUTES.SHOW_FORM} element={<FormDetails />} />
+              <Route path={ROUTES.SHOW_FORM} element={<MenFormDetails />} />
             </Route>
             <Route path={ROUTES.WOMEN} element={<Outlet />}>
               <Route path="" element={<WomenForms />} />
@@ -50,6 +52,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <Toaster />
     </>
   );
 }

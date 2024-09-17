@@ -24,6 +24,7 @@ import Card from "../components/Card";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../routes";
 import AllAlerts from "../components/AllAlerts";
+import { womenFormData } from "../lib/womenFormData";
 
 const sortOptions = [
   { name: "رقم الاستمارة", href: "#", current: true },
@@ -34,6 +35,14 @@ const sortOptions = [
 ];
 
 const filters = [
+  {
+    id: "form_status",
+    name: "حالة الاستمارة",
+    options: [
+      { value: "suspended", label: "معلقة", checked: false },
+      { value: "valid", label: "سارية", checked: false },
+    ],
+  },
   {
     id: "governorates",
     name: "المحافظات",
@@ -419,26 +428,9 @@ function WomenForms() {
             {/* Product grid */}
             <div className="lg:col-span-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                {womenFormData.map((form) => (
+                  <Card key={form.code} data={form} />
+                ))}
               </div>
             </div>
           </div>
