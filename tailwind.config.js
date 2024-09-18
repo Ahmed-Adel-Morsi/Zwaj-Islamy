@@ -10,6 +10,7 @@ export default {
       colors: {
         main: "#19998f",
         "main-hov": "#1aa09a",
+        "main-dark": "#2a6f6a",
       },
     },
     screens: {

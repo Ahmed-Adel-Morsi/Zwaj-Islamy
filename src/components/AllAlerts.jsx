@@ -4,7 +4,7 @@ function AllAlerts() {
   return (
     <div className="pb-12 space-y-4">
       <Alert
-        type="warning"
+        type="success"
         title="عن الموقع"
         message={
           <ol className="list-decimal list-inside space-y-2">
@@ -37,7 +37,7 @@ function AllAlerts() {
               الالكتروني التالى:{" "}
               <a
                 href="mailto:support@zwaj-islamy.com"
-                className="text-gray-800 font-bold hover:text-gray-700"
+                className="text-yellow-400 font-bold hover:text-yellow-500"
               >
                 support@zwaj-islamy.com
               </a>
@@ -48,7 +48,6 @@ function AllAlerts() {
       />
       <div className="flex flex-col sm:flex-row gap-4">
         <Alert
-          type="success"
           title="تنوية هام جداً !"
           message="ان شاء الله اي عريس هيتجوز بالطريقة الشرعيه عن طريقي اتفاقنا كالاتي
             ان شاء الله هتطلع ١٠٠٠ جنيه صدقة لله لاحد الفقراء او المحتاجين انت
@@ -63,7 +62,6 @@ function AllAlerts() {
             انت.. كَفَىٰ بِاللَّهِ شَهِيدًا بَيْنِي وَبَيْنَكُمْ."
         />
         <Alert
-          type="error"
           title="تنبيه من عمليات الاحتيال !"
           message="يرجي العلم ان هناك بعض الاشخاص يقوم بانتحال صفة فريق عمل الموقع والتطبيق او انه احد اصدقاء عبد الكريم محمود ويبداء فى الاحتيال على اصحاب الاستمارات بحجة عمل استبيان او جمع معلومات عن المتصلين واشياء اخري لذا فريق العمل لا يتواصل مع احد فريق العمل يحذر من اي تعامل خارج الموقع او التطبيق من خلال صفحة اتصل بنا واضفنا ايضا بريد الكتروني ورقم واتساب للتواصل المباشر فى حال حدوث اي شىء ويمكن استخدام نموذج اتصل بنا لاستقبال استفساراتكم وقريبا سيكون نموذج اتصل بنا متاح عبر التطبيق النسخة ٢ الموقع غير مسؤول عن اي شخص يقوم بالتواصل مع اي من اصحاب الاستمارات ولذا وجب التنبيه."
         />

@@ -21,7 +21,7 @@ import { menFormData } from "../lib/menFormData";
 function Section({ title, children, className }) {
   return (
     <div
-      className={`rounded-lg bg-orange-600 bg-opacity-10 p-6 xs:p-8 sm:p-10 space-y-4 xs:space-y-6 sm:space-y-8 ${
+      className={`rounded-lg bg-main bg-opacity-10 p-6 xs:p-8 sm:p-10 space-y-4 xs:space-y-6 sm:space-y-8 ${
         className ? className : ""
       }`}
     >
@@ -86,7 +86,7 @@ function MasterSection({ specifications, suspended }) {
         <Image src={specifications.img} />
         <div className="text-center my-6">
           <h3 className="text-[8vw] xs:text-3xl font-bold">
-            الأستاذ {specifications.name[0]}
+            الأستاذ {specifications.name.split(" ")[0]}
           </h3>
           <p className="text-[5vw] xs:text-lg text-red-700 font-bold mt-2">
             {specifications.job}
@@ -104,7 +104,7 @@ function MasterSection({ specifications, suspended }) {
             {specifications.description}
           </p>
         </div>
-        <div className="p-4 xs:p-6 sm:p-8 bg-orange-600 bg-opacity-20 rounded-lg">
+        <div className="p-4 xs:p-6 sm:p-8 bg-main-hov bg-opacity-20 rounded-lg">
           <div className="space-y-4 text-gray-800 text-[4.5vw] xs:text-base">
             <div className="flex items-center gap-2">
               <svg
@@ -440,7 +440,7 @@ function MenFormDetails() {
       {formData && (
         <div className="mt-8 flex flex-col md:flex-row gap-8">
           <MasterSection
-            specifications={formData.groomSpecifications}
+            specifications={formData.specifications}
             suspended={formData.suspended}
           />
           <div className="grow w-full grid lg:grid-cols-2 gap-8">
@@ -449,31 +449,31 @@ function MenFormDetails() {
                 <ul className="space-y-3 text-gray-800 list-disc list-inside [&_li::marker]:text-red-700 text-[4.5vw] xs:text-base">
                   <li>
                     <span className="font-bold">اللون :</span>{" "}
-                    {formData.groomSpecifications.skinColor}
+                    {formData.specifications.skinColor}
                   </li>
                   <li>
                     <span className="font-bold">المؤهل :</span>{" "}
-                    {formData.groomSpecifications.qualification}
+                    {formData.specifications.qualification}
                   </li>
                   <li>
                     <span className="font-bold">الوظيفة :</span>{" "}
-                    {formData.groomSpecifications.job}
+                    {formData.specifications.job}
                   </li>
                   <li>
                     <span className="font-bold">الأطفال :</span>{" "}
-                    {formData.groomSpecifications.hasChildren
-                      ? `${formData.groomSpecifications.childrenNumber} أطفال`
+                    {formData.specifications.hasChildren
+                      ? `${formData.specifications.childrenNumber} أطفال`
                       : "بدون اطفال"}
                   </li>
                   <li>
                     <span className="font-bold">الحالة الصحية :</span>{" "}
-                    {formData.groomSpecifications.illnessOrDisability
-                      ? `اعانى من ${formData.groomSpecifications.healthStatus}`
+                    {formData.specifications.illnessOrDisability
+                      ? `اعانى من ${formData.specifications.healthStatus}`
                       : "لا اعانى من اي امراض او إعاقة"}
                   </li>
                   <li>
                     <span className="font-bold">الصلاة :</span>{" "}
-                    {formData.groomSpecifications.prayer
+                    {formData.specifications.prayer
                       ? "نعم احافظ على الصلاة"
                       : "لا احافظ على الصلاة"}
                   </li>
@@ -483,21 +483,21 @@ function MenFormDetails() {
                 <ul className="space-y-3 text-gray-800 list-disc list-inside [&_li::marker]:text-red-700 text-[4.5vw] xs:text-base">
                   <li>
                     <span className="font-bold">المحافظة : </span>
-                    {formData.groomSpecifications.sameGovernment
+                    {formData.specifications.sameGovernment
                       ? "لا أقبل الانتقال لمحافظة أخرى"
                       : "أقبل الانتقال لمحافظة أخرى"}
                   </li>
                   <li>
                     <span className="font-bold">التعدد : </span>
-                    {formData.groomSpecifications.acceptPolygamy
+                    {formData.specifications.acceptPolygamy
                       ? "أقبل التعدد"
                       : "لا أقبل التعدد"}
                   </li>
-                  {formData.groomSpecifications.acceptPolygamy &&
-                    formData.groomSpecifications.polygamyConditions !== "" && (
+                  {formData.specifications.acceptPolygamy &&
+                    formData.specifications.polygamyConditions !== "" && (
                       <li>
                         <span className="font-bold">شروط التعدد : </span>
-                        {formData.groomSpecifications.polygamyConditions}
+                        {formData.specifications.polygamyConditions}
                       </li>
                     )}
                 </ul>
@@ -506,28 +506,28 @@ function MenFormDetails() {
                 <ul className="space-y-3 text-gray-800 list-disc list-inside [&_li::marker]:text-red-700 text-[4.5vw] xs:text-base">
                   <li>
                     <span className="font-bold">السن :</span> من{" "}
-                    {formData.brideRequirements.ageRange.from} الى{" "}
-                    {formData.brideRequirements.ageRange.to} سنة
+                    {formData.requirements.ageRange.from} الى{" "}
+                    {formData.requirements.ageRange.to} سنة
                   </li>
                   <li>
                     <span className="font-bold">المؤهل :</span>{" "}
-                    {formData.brideRequirements.qualification}
+                    {formData.requirements.qualification}
                   </li>
                   <li>
                     <span className="font-bold">الحالة الإجماعية :</span>{" "}
-                    {formData.brideRequirements.maritalStatus.join(" أو ")}
+                    {formData.requirements.maritalStatus.join(" أو ")}
                   </li>
                   <li>
                     <span className="font-bold">الأطفال :</span>{" "}
-                    {formData.brideRequirements.children.join(" أو ")}
+                    {formData.requirements.children.join(" أو ")}
                   </li>
                   <li>
                     <span className="font-bold">السكن :</span>{" "}
-                    {formData.brideRequirements.housing}
+                    {formData.requirements.housing}
                   </li>
                   <li>
                     <span className="font-bold">المنطقة :</span>{" "}
-                    {formData.brideRequirements.area}
+                    {formData.requirements.area}
                   </li>
                 </ul>
               </Section>
@@ -535,12 +535,12 @@ function MenFormDetails() {
             <div className="space-y-8">
               <Section title="شروط آخرى">
                 <p className="text-gray-800 text-[4.5vw] xs:text-base">
-                  {formData.brideRequirements.otherConditions}
+                  {formData.requirements.otherConditions}
                 </p>
               </Section>
               <Section title="ملاحظات اضافية">
                 <p className="text-gray-800 text-[4.5vw] xs:text-base">
-                  {formData.brideRequirements.additionalNotes}
+                  {formData.requirements.additionalNotes}
                 </p>
               </Section>
               <Section title="إجراءات">

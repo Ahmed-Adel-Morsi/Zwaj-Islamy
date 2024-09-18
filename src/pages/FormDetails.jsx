@@ -444,7 +444,7 @@ function FormDetails() {
       {formData && (
         <div className="mt-8 flex flex-col md:flex-row gap-8">
           <MasterSection
-            specifications={formData.brideSpecifications}
+            specifications={formData.specifications}
             suspended={formData.suspended}
           />
           <div className="grow w-full grid lg:grid-cols-2 gap-8">
@@ -453,31 +453,31 @@ function FormDetails() {
                 <ul className="space-y-3 text-gray-800 list-disc list-inside [&_li::marker]:text-red-700 text-[4.5vw] xs:text-base">
                   <li>
                     <span className="font-bold">اللون :</span>{" "}
-                    {formData.brideSpecifications.skinColor}
+                    {formData.specifications.skinColor}
                   </li>
                   <li>
                     <span className="font-bold">المؤهل :</span>{" "}
-                    {formData.brideSpecifications.qualification}
+                    {formData.specifications.qualification}
                   </li>
                   <li>
                     <span className="font-bold">الوظيفة :</span>{" "}
-                    {formData.brideSpecifications.job}
+                    {formData.specifications.job}
                   </li>
                   <li>
                     <span className="font-bold">الأطفال :</span>{" "}
-                    {formData.brideSpecifications.hasChildren
-                      ? `${formData.brideSpecifications.childrenNumber} أطفال`
+                    {formData.specifications.hasChildren
+                      ? `${formData.specifications.childrenNumber} أطفال`
                       : "بدون اطفال"}
                   </li>
                   <li>
                     <span className="font-bold">الحالة الصحية :</span>{" "}
-                    {formData.brideSpecifications.illnessOrDisability
-                      ? `اعانى من ${formData.brideSpecifications.healthStatus}`
+                    {formData.specifications.illnessOrDisability
+                      ? `اعانى من ${formData.specifications.healthStatus}`
                       : "لا اعانى من اي امراض او إعاقة"}
                   </li>
                   <li>
                     <span className="font-bold">الصلاة :</span>{" "}
-                    {formData.brideSpecifications.prayer
+                    {formData.specifications.prayer
                       ? "نعم احافظ على الصلاة"
                       : "لا احافظ على الصلاة"}
                   </li>
@@ -487,21 +487,21 @@ function FormDetails() {
                 <ul className="space-y-3 text-gray-800 list-disc list-inside [&_li::marker]:text-red-700 text-[4.5vw] xs:text-base">
                   <li>
                     <span className="font-bold">المحافظة : </span>
-                    {formData.brideSpecifications.sameGovernment
+                    {formData.specifications.sameGovernment
                       ? "لا أقبل الانتقال لمحافظة أخرى"
                       : "أقبل الانتقال لمحافظة أخرى"}
                   </li>
                   <li>
                     <span className="font-bold">التعدد : </span>
-                    {formData.brideSpecifications.acceptPolygamy
+                    {formData.specifications.acceptPolygamy
                       ? "أقبل التعدد"
                       : "لا أقبل التعدد"}
                   </li>
-                  {formData.brideSpecifications.acceptPolygamy &&
-                    formData.brideSpecifications.polygamyConditions !== "" && (
+                  {formData.specifications.acceptPolygamy &&
+                    formData.specifications.polygamyConditions !== "" && (
                       <li>
                         <span className="font-bold">شروط التعدد : </span>
-                        {formData.brideSpecifications.polygamyConditions}
+                        {formData.specifications.polygamyConditions}
                       </li>
                     )}
                 </ul>
@@ -510,28 +510,28 @@ function FormDetails() {
                 <ul className="space-y-3 text-gray-800 list-disc list-inside [&_li::marker]:text-red-700 text-[4.5vw] xs:text-base">
                   <li>
                     <span className="font-bold">السن :</span> من{" "}
-                    {formData.groomRequirements.ageRange.from} الى{" "}
-                    {formData.groomRequirements.ageRange.to} سنة
+                    {formData.requirements.ageRange.from} الى{" "}
+                    {formData.requirements.ageRange.to} سنة
                   </li>
                   <li>
                     <span className="font-bold">المؤهل :</span>{" "}
-                    {formData.groomRequirements.qualification}
+                    {formData.requirements.qualification}
                   </li>
                   <li>
                     <span className="font-bold">الحالة الإجماعية :</span>{" "}
-                    {formData.groomRequirements.maritalStatus.join(" أو ")}
+                    {formData.requirements.maritalStatus.join(" أو ")}
                   </li>
                   <li>
                     <span className="font-bold">الأطفال :</span>{" "}
-                    {formData.groomRequirements.children.join(" أو ")}
+                    {formData.requirements.children.join(" أو ")}
                   </li>
                   <li>
                     <span className="font-bold">السكن :</span>{" "}
-                    {formData.groomRequirements.housing}
+                    {formData.requirements.housing}
                   </li>
                   <li>
                     <span className="font-bold">المنطقة :</span>{" "}
-                    {formData.groomRequirements.area}
+                    {formData.requirements.area}
                   </li>
                 </ul>
               </Section>
@@ -539,12 +539,12 @@ function FormDetails() {
             <div className="space-y-8">
               <Section title="شروط آخرى">
                 <p className="text-gray-800 text-[4.5vw] xs:text-base">
-                  {formData.groomRequirements.otherConditions}
+                  {formData.requirements.otherConditions}
                 </p>
               </Section>
               <Section title="ملاحظات اضافية">
                 <p className="text-gray-800 text-[4.5vw] xs:text-base">
-                  {formData.groomRequirements.additionalNotes}
+                  {formData.requirements.additionalNotes}
                 </p>
               </Section>
               <Section title="إجراءات">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogBackdrop,
@@ -16,6 +16,7 @@ import {
   ArrowTopRightOnSquareIcon,
   ChevronDownIcon,
   FunnelIcon,
+  MagnifyingGlassIcon,
   MinusIcon,
   PlusIcon,
   Squares2X2Icon,
@@ -25,9 +26,11 @@ import { Link } from "react-router-dom";
 import { ROUTES } from "../routes";
 import AllAlerts from "../components/AllAlerts";
 import { womenFormData } from "../lib/womenFormData";
+import Pagination from "../components/Pagination";
 
 const sortOptions = [
-  { name: "رقم الاستمارة", href: "#", current: true },
+  { name: "عشوائى", href: "#", current: true },
+  { name: "رقم الاستمارة", href: "#", current: false },
   { name: "السن: من الأصغر للأكبر", href: "#", current: false },
   { name: "السن: من الأكبر للأصغر", href: "#", current: false },
   { name: "الطول: من الأقصر للأطول", href: "#", current: false },
@@ -193,6 +196,16 @@ function classNames(...classes) {
 
 function WomenForms() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredForms, setFilteredForms] = useState(womenFormData);
+
+  useEffect(() => {
+    setFilteredForms(
+      womenFormData.filter((form) =>
+        `${form.code} ${form.specifications.name}`.includes(searchQuery)
+      )
+    );
+  }, [searchQuery]);
 
   return (
     <div>
@@ -293,10 +306,27 @@ function WomenForms() {
 
       <main className="mx-auto max-w-[1700px] px-6 sm:px-8 lg:px-10 pt-12 md:pt-16 xl:pt-24">
         <AllAlerts />
-        <div className="flex flex-col sm:flex-row items-center sm:items-baseline gap-8 justify-between border-b border-gray-200 pb-6">
+        <div className="flex flex-col sm:flex-row items-center gap-8 justify-between border-b border-gray-200 pb-6">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 text-center sm:text-right">
             استمارات النساء
           </h1>
+
+          <div className="relative rounded-md shadow-sm w-full md:w-1/2">
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+              <span className="text-gray-500 sm:text-sm">
+                <MagnifyingGlassIcon className="size-4" />
+              </span>
+            </div>
+            <input
+              id="form_code"
+              name="form_code"
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="ابحث عن الإستمارة بالكود"
+              className="block w-full rounded-md border-0 py-1.5 px-8 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+            />
+          </div>
 
           <div className="flex items-center">
             <Menu as="div" className="relative inline-block text-left">
@@ -428,10 +458,11 @@ function WomenForms() {
             {/* Product grid */}
             <div className="lg:col-span-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-                {womenFormData.map((form) => (
+                {filteredForms.map((form) => (
                   <Card key={form.code} data={form} />
                 ))}
               </div>
+              <Pagination />
             </div>
           </div>
         </section>

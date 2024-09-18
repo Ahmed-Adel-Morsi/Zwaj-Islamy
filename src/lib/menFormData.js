@@ -2,7 +2,7 @@ export const menFormData = [
   {
     code: 1,
     suspended: true,
-    groomSpecifications: {
+    specifications: {
       img: "https://randomuser.me/api/portraits/men/1.jpg",
       name: "أحمد محمد علي",
       job: "مهندس مدني",
@@ -21,7 +21,7 @@ export const menFormData = [
       acceptPolygamy: false,
       phone: "01098765432",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 20, to: 28 },
       qualification: "مؤهل جامعي",
       maritalStatus: ["أعزب", "مطلقة بدون أطفال"],
@@ -36,8 +36,8 @@ export const menFormData = [
   {
     code: 2,
     suspended: false,
-    groomSpecifications: {
-      img: "https://randomuser.me/api/portraits/men/2.jpg",
+    specifications: {
+      img: "https://randomuser.me/api/portraits/men/22.jpg",
       name: "محمود حسن علي",
       job: "طبيب",
       description: "محب للخير، ذو أخلاق عالية، متواضع وبشوش.",
@@ -55,7 +55,7 @@ export const menFormData = [
       acceptPolygamy: false,
       phone: "01123456789",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 22, to: 30 },
       qualification: "مؤهل جامعي",
       maritalStatus: ["أعزب", "أرملة"],
@@ -70,8 +70,8 @@ export const menFormData = [
   {
     code: 3,
     suspended: false,
-    groomSpecifications: {
-      img: "https://randomuser.me/api/portraits/men/3.jpg",
+    specifications: {
+      img: "https://randomuser.me/api/portraits/men/26.jpg",
       name: "علي جمال إبراهيم",
       job: "محاسب",
       description: "اجتماعي، أعمل بجد وأسعى لتحقيق الاستقرار.",
@@ -89,7 +89,7 @@ export const menFormData = [
       acceptPolygamy: false,
       phone: "01234567890",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 22, to: 26 },
       qualification: "دبلوم أو مؤهل جامعي",
       maritalStatus: ["أعزب"],
@@ -104,7 +104,7 @@ export const menFormData = [
   {
     code: 4,
     suspended: true,
-    groomSpecifications: {
+    specifications: {
       img: "https://randomuser.me/api/portraits/men/4.jpg",
       name: "عبدالله يوسف محمود",
       job: "محامي",
@@ -124,7 +124,7 @@ export const menFormData = [
       acceptPolygamy: true,
       phone: "01065432123",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 27, to: 35 },
       qualification: "مؤهل متوسط أو جامعي",
       maritalStatus: ["مطلقة", "أرملة"],
@@ -139,8 +139,8 @@ export const menFormData = [
   {
     code: 5,
     suspended: true,
-    groomSpecifications: {
-      img: "https://randomuser.me/api/portraits/men/5.jpg",
+    specifications: {
+      img: "https://randomuser.me/api/portraits/men/29.jpg",
       name: "يحيى عادل مصطفى",
       job: "تاجر",
       description: "محب للسفر، اجتماعي ومتفائل بالحياة.",
@@ -158,7 +158,7 @@ export const menFormData = [
       acceptPolygamy: false,
       phone: "01567890123",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 30, to: 40 },
       qualification: "مؤهل متوسط أو جامعي",
       maritalStatus: ["أرملة", "مطلقة"],
@@ -173,8 +173,8 @@ export const menFormData = [
   {
     code: 6,
     suspended: false,
-    groomSpecifications: {
-      img: "https://randomuser.me/api/portraits/men/6.jpg",
+    specifications: {
+      img: "https://randomuser.me/api/portraits/men/28.jpg",
       name: "سامي عبدالعزيز فهمي",
       job: "مدرس",
       description: "محب للأطفال والتعليم، صبور وأحب تطوير نفسي باستمرار.",
@@ -192,7 +192,7 @@ export const menFormData = [
       acceptPolygamy: false,
       phone: "01123456781",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 22, to: 27 },
       qualification: "مؤهل جامعي",
       maritalStatus: ["أعزب"],
@@ -207,7 +207,7 @@ export const menFormData = [
   {
     code: 7,
     suspended: false,
-    groomSpecifications: {
+    specifications: {
       img: "https://randomuser.me/api/portraits/men/7.jpg",
       name: "عمرو محمد فتحي",
       job: "محاسب قانوني",
@@ -226,7 +226,7 @@ export const menFormData = [
       acceptPolygamy: false,
       phone: "01056789123",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 26, to: 32 },
       qualification: "دبلوم أو جامعي",
       maritalStatus: ["مطلقة", "أرملة"],
@@ -241,8 +241,8 @@ export const menFormData = [
   {
     code: 8,
     suspended: false,
-    groomSpecifications: {
-      img: "https://randomuser.me/api/portraits/men/8.jpg",
+    specifications: {
+      img: "https://randomuser.me/api/portraits/men/30.jpg",
       name: "محمد عبدالرحمن صالح",
       job: "صاحب شركة",
       description: "عملي وطموح، أحلم بتوسيع أعمالي وحياتي العائلية.",
@@ -261,7 +261,7 @@ export const menFormData = [
       acceptPolygamy: true,
       phone: "01234567892",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 30, to: 45 },
       qualification: "مؤهل متوسط أو جامعي",
       maritalStatus: ["أرملة", "مطلقة"],
@@ -276,7 +276,7 @@ export const menFormData = [
   {
     code: 9,
     suspended: false,
-    groomSpecifications: {
+    specifications: {
       img: "https://randomuser.me/api/portraits/men/9.jpg",
       name: "حسين علي إبراهيم",
       job: "مدير مبيعات",
@@ -295,7 +295,7 @@ export const menFormData = [
       acceptPolygamy: false,
       phone: "01098761234",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 25, to: 32 },
       qualification: "مؤهل جامعي",
       maritalStatus: ["أعزب"],
@@ -310,8 +310,8 @@ export const menFormData = [
   {
     code: 10,
     suspended: false,
-    groomSpecifications: {
-      img: "https://randomuser.me/api/portraits/men/10.jpg",
+    specifications: {
+      img: "https://randomuser.me/api/portraits/men/31.jpg",
       name: "خالد محمود عبدالعزيز",
       job: "مدير مشروع",
       description: "ملتزم، جدي في عملي، وأحب تطوير مشاريعي الخاصة.",
@@ -329,7 +329,7 @@ export const menFormData = [
       acceptPolygamy: true,
       phone: "01112349876",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 28, to: 35 },
       qualification: "مؤهل جامعي",
       maritalStatus: ["مطلقة", "أرملة"],
@@ -344,7 +344,7 @@ export const menFormData = [
   {
     code: 11,
     suspended: true,
-    groomSpecifications: {
+    specifications: {
       img: "https://randomuser.me/api/portraits/men/11.jpg",
       name: "أمير يوسف العبد",
       job: "صاحب محل تجاري",
@@ -365,7 +365,7 @@ export const menFormData = [
       acceptPolygamy: true,
       phone: "01234566789",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 30, to: 40 },
       qualification: "مؤهل متوسط",
       maritalStatus: ["أرملة", "مطلقة"],
@@ -380,7 +380,7 @@ export const menFormData = [
   {
     code: 12,
     suspended: false,
-    groomSpecifications: {
+    specifications: {
       img: "https://randomuser.me/api/portraits/men/12.jpg",
       name: "أسامة سيد أحمد",
       job: "فني كهرباء",
@@ -399,7 +399,7 @@ export const menFormData = [
       acceptPolygamy: false,
       phone: "01098765421",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 25, to: 35 },
       qualification: "دبلوم أو مؤهل جامعي",
       maritalStatus: ["أعزب", "مطلقة"],
@@ -414,8 +414,8 @@ export const menFormData = [
   {
     code: 13,
     suspended: false,
-    groomSpecifications: {
-      img: "https://randomuser.me/api/portraits/men/13.jpg",
+    specifications: {
+      img: "https://randomuser.me/api/portraits/men/33.jpg",
       name: "محمود سعيد علي",
       job: "محامي",
       description: "محب للعدالة والحق، أعمل في المحاماة منذ 10 سنوات.",
@@ -433,7 +433,7 @@ export const menFormData = [
       acceptPolygamy: true,
       phone: "01123467890",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 30, to: 38 },
       qualification: "مؤهل جامعي",
       maritalStatus: ["أرملة", "مطلقة"],
@@ -448,8 +448,8 @@ export const menFormData = [
   {
     code: 14,
     suspended: true,
-    groomSpecifications: {
-      img: "https://randomuser.me/api/portraits/men/14.jpg",
+    specifications: {
+      img: "https://randomuser.me/api/portraits/men/34.jpg",
       name: "عبدالرحمن يوسف حسني",
       job: "مهندس ميكانيكا",
       description: "مجتهد وطموح، أحب الابتكار والعمل الجاد.",
@@ -468,7 +468,7 @@ export const menFormData = [
       acceptPolygamy: false,
       phone: "01056789124",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 30, to: 40 },
       qualification: "مؤهل جامعي",
       maritalStatus: ["مطلقة", "أرملة"],
@@ -483,8 +483,8 @@ export const menFormData = [
   {
     code: 15,
     suspended: true,
-    groomSpecifications: {
-      img: "https://randomuser.me/api/portraits/men/15.jpg",
+    specifications: {
+      img: "https://randomuser.me/api/portraits/men/36.jpg",
       name: "حسن محمد عبدالحليم",
       job: "مدير شركة مقاولات",
       description:
@@ -503,7 +503,7 @@ export const menFormData = [
       acceptPolygamy: true,
       phone: "01234567894",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 35, to: 45 },
       qualification: "مؤهل جامعي",
       maritalStatus: ["مطلقة", "أرملة"],
@@ -518,8 +518,8 @@ export const menFormData = [
   {
     code: 16,
     suspended: false,
-    groomSpecifications: {
-      img: "https://randomuser.me/api/portraits/men/16.jpg",
+    specifications: {
+      img: "https://randomuser.me/api/portraits/men/35.jpg",
       name: "أشرف إبراهيم منصور",
       job: "مصمم جرافيك",
       description: "مبدع وأحب الفن والابتكار، ملتزم دينياً وأبحث عن الاستقرار.",
@@ -537,7 +537,7 @@ export const menFormData = [
       acceptPolygamy: false,
       phone: "01123467891",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 25, to: 30 },
       qualification: "مؤهل جامعي",
       maritalStatus: ["أعزب"],
@@ -552,8 +552,8 @@ export const menFormData = [
   {
     code: 17,
     suspended: false,
-    groomSpecifications: {
-      img: "https://randomuser.me/api/portraits/men/17.jpg",
+    specifications: {
+      img: "https://randomuser.me/api/portraits/men/37.jpg",
       name: "خالد حمدي مصطفى",
       job: "محاسب مالي",
       description: "دقيق ومنظم، محب للرياضة وأهتم بالاستقرار الأسري.",
@@ -571,7 +571,7 @@ export const menFormData = [
       acceptPolygamy: false,
       phone: "01056781234",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 28, to: 35 },
       qualification: "مؤهل جامعي",
       maritalStatus: ["أعزب"],
@@ -586,8 +586,8 @@ export const menFormData = [
   {
     code: 18,
     suspended: false,
-    groomSpecifications: {
-      img: "https://randomuser.me/api/portraits/men/18.jpg",
+    specifications: {
+      img: "https://randomuser.me/api/portraits/men/43.jpg",
       name: "مصطفى جمال عبدالرحيم",
       job: "فني شبكات",
       description: "مهتم بالتكنولوجيا، وأحب التطوير الدائم في عملي.",
@@ -606,7 +606,7 @@ export const menFormData = [
       acceptPolygamy: false,
       phone: "01234567897",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 30, to: 40 },
       qualification: "مؤهل متوسط",
       maritalStatus: ["مطلقة", "أرملة"],
@@ -621,8 +621,8 @@ export const menFormData = [
   {
     code: 19,
     suspended: false,
-    groomSpecifications: {
-      img: "https://randomuser.me/api/portraits/men/19.jpg",
+    specifications: {
+      img: "https://randomuser.me/api/portraits/men/40.jpg",
       name: "علي عبدالحكيم نصر",
       job: "فني إلكترونيات",
       description: "محب للتكنولوجيا وأعمل في الصيانة منذ سنوات.",
@@ -640,7 +640,7 @@ export const menFormData = [
       acceptPolygamy: false,
       phone: "01112345678",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 28, to: 35 },
       qualification: "مؤهل متوسط أو جامعي",
       maritalStatus: ["أعزب"],
@@ -655,7 +655,7 @@ export const menFormData = [
   {
     code: 20,
     suspended: true,
-    groomSpecifications: {
+    specifications: {
       img: "https://randomuser.me/api/portraits/men/20.jpg",
       name: "علاء إبراهيم سالم",
       job: "سائق نقل ثقيل",
@@ -674,7 +674,7 @@ export const menFormData = [
       acceptPolygamy: true,
       phone: "01234567898",
     },
-    brideRequirements: {
+    requirements: {
       ageRange: { from: 30, to: 39 },
       qualification: "مؤهل متوسط أو جامعي",
       maritalStatus: ["أعزب"],

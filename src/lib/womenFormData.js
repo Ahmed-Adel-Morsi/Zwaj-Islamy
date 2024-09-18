@@ -2,7 +2,7 @@ export const womenFormData = [
   {
     code: 1,
     suspended: false,
-    brideSpecifications: {
+    specifications: {
       name: "مريم احمد عبدالله",
       job: "طبيبة",
       description:
@@ -23,7 +23,7 @@ export const womenFormData = [
       polygamyConditions: "العدل بين الزوجات",
       phone: "01012345678",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 25, to: 30 },
       qualification: "عالي",
       maritalStatus: ["اعزب", "مطلق", "متزوج", "أرمل"],
@@ -39,7 +39,7 @@ export const womenFormData = [
   {
     code: 2,
     suspended: true,
-    brideSpecifications: {
+    specifications: {
       name: "فاطمة محمد علي",
       job: "مهندسة",
       description: "على قدر من الجمال والالتزام، احب النظام والوضوح والصدق.",
@@ -58,7 +58,7 @@ export const womenFormData = [
       polygamyConditions: "",
       phone: "01098765432",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 32, to: 40 },
       qualification: "عالي",
       maritalStatus: ["متزوج", "أرمل"],
@@ -73,7 +73,7 @@ export const womenFormData = [
   {
     code: 3,
     suspended: false,
-    brideSpecifications: {
+    specifications: {
       name: "أسماء خالد محمود",
       job: "مدرسة",
       description: "محافظة على الصلاة وملتزمة، ابحث عن زوج متدين وذو خلق.",
@@ -93,7 +93,7 @@ export const womenFormData = [
       polygamyConditions: "",
       phone: "01022334455",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 30, to: 35 },
       qualification: "عالي",
       maritalStatus: ["اعزب", "أرمل"],
@@ -108,7 +108,7 @@ export const womenFormData = [
   {
     code: 4,
     suspended: false,
-    brideSpecifications: {
+    specifications: {
       name: "سعاد علي حسين",
       job: "محاسبة",
       description: "شخصية قوية ومحبة للعمل، ابحث عن زوج ذو عقلية منفتحة.",
@@ -127,7 +127,7 @@ export const womenFormData = [
       polygamyConditions: "لا بأس بشرط العدل.",
       phone: "01234567891",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 35, to: 45 },
       qualification: "عالي",
       maritalStatus: ["متزوج", "أرمل"],
@@ -142,7 +142,7 @@ export const womenFormData = [
   {
     code: 5,
     suspended: false,
-    brideSpecifications: {
+    specifications: {
       name: "هند سالم عبدالعزيز",
       job: "طبيبة أسنان",
       description: "هادئة الطباع وملتزمة بالفرائض الدينية، ابحث عن زوج صالح.",
@@ -161,7 +161,7 @@ export const womenFormData = [
       polygamyConditions: "",
       phone: "01044556677",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 30, to: 40 },
       qualification: "عالي",
       maritalStatus: ["اعزب", "أرمل"],
@@ -176,7 +176,7 @@ export const womenFormData = [
   {
     code: 6,
     suspended: true,
-    brideSpecifications: {
+    specifications: {
       name: "ليلى حسن إبراهيم",
       job: "محامية",
       description: "شخصية قوية وذات إرادة، ابحث عن شخص مستقل وقوي الشخصية.",
@@ -195,7 +195,7 @@ export const womenFormData = [
       polygamyConditions: "العدل بين الزوجات.",
       phone: "01122334455",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 35, to: 45 },
       qualification: "عالي",
       maritalStatus: ["متزوج", "أرمل"],
@@ -210,7 +210,7 @@ export const womenFormData = [
   {
     code: 7,
     suspended: false,
-    brideSpecifications: {
+    specifications: {
       name: "نادية علي محمود",
       job: "مدرسة",
       description: "محبة للعمل والتعليم، احب الصراحة والوضوح.",
@@ -229,7 +229,7 @@ export const womenFormData = [
       polygamyConditions: "",
       phone: "01099887766",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 28, to: 35 },
       qualification: "عالي",
       maritalStatus: ["اعزب"],
@@ -244,7 +244,7 @@ export const womenFormData = [
   {
     code: 8,
     suspended: false,
-    brideSpecifications: {
+    specifications: {
       name: "أميرة سعيد فتحي",
       job: "مهندسة ديكور",
       description: "ذات ذوق رفيع ومحبة للفنون، ابحث عن شخص ذو ثقافة.",
@@ -263,7 +263,7 @@ export const womenFormData = [
       polygamyConditions: "العدل والمساواة.",
       phone: "01022336688",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 32, to: 38 },
       qualification: "عالي",
       maritalStatus: ["متزوج", "أرمل"],
@@ -278,7 +278,7 @@ export const womenFormData = [
   {
     code: 9,
     suspended: true,
-    brideSpecifications: {
+    specifications: {
       name: "دعاء مصطفى حسن",
       job: "صيدلانية",
       description: "محبة للعلم، ابحث عن زوج يهتم بالتعليم والأخلاق.",
@@ -298,7 +298,7 @@ export const womenFormData = [
       polygamyConditions: "",
       phone: "01055667788",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 35, to: 45 },
       qualification: "عالي",
       maritalStatus: ["أرمل"],
@@ -313,7 +313,7 @@ export const womenFormData = [
   {
     code: 10,
     suspended: true,
-    brideSpecifications: {
+    specifications: {
       name: "رنا محمود كمال",
       job: "مترجمة",
       description: "هادئة وخجولة، احب السفر والتعرف على الثقافات.",
@@ -332,7 +332,7 @@ export const womenFormData = [
       polygamyConditions: "",
       phone: "01066778899",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 30, to: 35 },
       qualification: "عالي",
       maritalStatus: ["اعزب"],
@@ -347,7 +347,7 @@ export const womenFormData = [
   {
     code: 11,
     suspended: false,
-    brideSpecifications: {
+    specifications: {
       name: "سارة أحمد يوسف",
       job: "مديرة تسويق",
       description: "طموحة ومحبة للعمل، ابحث عن زوج متعاون.",
@@ -366,7 +366,7 @@ export const womenFormData = [
       polygamyConditions: "",
       phone: "01088776655",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 35, to: 40 },
       qualification: "عالي",
       maritalStatus: ["اعزب", "مطلق"],
@@ -381,7 +381,7 @@ export const womenFormData = [
   {
     code: 12,
     suspended: false,
-    brideSpecifications: {
+    specifications: {
       name: "شيماء حسين علي",
       job: "طبيبة",
       description: "ملتزمة ومحافظة، ابحث عن زوج متدين وملتزم.",
@@ -401,7 +401,7 @@ export const womenFormData = [
       polygamyConditions: "",
       phone: "01055443322",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 37, to: 45 },
       qualification: "عالي",
       maritalStatus: ["أرمل", "مطلق"],
@@ -416,7 +416,7 @@ export const womenFormData = [
   {
     code: 13,
     suspended: false,
-    brideSpecifications: {
+    specifications: {
       name: "هالة يوسف إسماعيل",
       job: "ممرضة",
       description: "ودودة ومهتمة بالعناية بالآخرين، ابحث عن شخص طيب القلب.",
@@ -435,7 +435,7 @@ export const womenFormData = [
       polygamyConditions: "العدل بين الزوجات.",
       phone: "01122334411",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 35, to: 42 },
       qualification: "متوسط",
       maritalStatus: ["أرمل", "مطلق"],
@@ -450,7 +450,7 @@ export const womenFormData = [
   {
     code: 14,
     suspended: true,
-    brideSpecifications: {
+    specifications: {
       name: "عائشة عبد الرحمن",
       job: "ربة منزل",
       description: "محبة للأسرة والاهتمام بالأطفال، ابحث عن زوج يقدر الأسرة.",
@@ -470,7 +470,7 @@ export const womenFormData = [
       polygamyConditions: "",
       phone: "01099882244",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 40, to: 50 },
       qualification: "متوسط",
       maritalStatus: ["أرمل", "مطلق"],
@@ -485,7 +485,7 @@ export const womenFormData = [
   {
     code: 15,
     suspended: false,
-    brideSpecifications: {
+    specifications: {
       name: "هناء علي محمد",
       job: "معلمة",
       description: "مهتمة بالتعليم والتطوير، ابحث عن زوج متفهم وذو طموح.",
@@ -504,7 +504,7 @@ export const womenFormData = [
       polygamyConditions: "",
       phone: "01055667799",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 30, to: 35 },
       qualification: "عالي",
       maritalStatus: ["اعزب"],
@@ -519,7 +519,7 @@ export const womenFormData = [
   {
     code: 16,
     suspended: true,
-    brideSpecifications: {
+    specifications: {
       name: "رنا كمال إبراهيم",
       job: "مستشارة قانونية",
       description: "أحب النظام والالتزام، أبحث عن شخص جاد.",
@@ -538,7 +538,7 @@ export const womenFormData = [
       polygamyConditions: "",
       phone: "01044556677",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 32, to: 37 },
       qualification: "عالي",
       maritalStatus: ["اعزب"],
@@ -553,7 +553,7 @@ export const womenFormData = [
   {
     code: 17,
     suspended: false,
-    brideSpecifications: {
+    specifications: {
       name: "سلمى عبد الله",
       job: "مساعدة طبية",
       description: "محبة للأعمال الخيرية، أبحث عن شخص ملتزم ومهتم بالمجتمع.",
@@ -572,7 +572,7 @@ export const womenFormData = [
       polygamyConditions: "العدل بين الزوجات.",
       phone: "01033445566",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 28, to: 33 },
       qualification: "عالي",
       maritalStatus: ["اعزب", "مطلق"],
@@ -587,7 +587,7 @@ export const womenFormData = [
   {
     code: 18,
     suspended: false,
-    brideSpecifications: {
+    specifications: {
       name: "نجوى حسين",
       job: "مديرة مشاريع",
       description: "طموحة ومجتهدة، أبحث عن شريك حياة يشاركني أهدافي.",
@@ -606,7 +606,7 @@ export const womenFormData = [
       polygamyConditions: "",
       phone: "01055667700",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 33, to: 40 },
       qualification: "عالي",
       maritalStatus: ["اعزب", "مطلق"],
@@ -621,7 +621,7 @@ export const womenFormData = [
   {
     code: 19,
     suspended: true,
-    brideSpecifications: {
+    specifications: {
       name: "زهراء محمد",
       job: "أستاذة جامعية",
       description: "محبة للعلم والتعلم، أبحث عن شخص متعلم ومهتم بالثقافة.",
@@ -640,7 +640,7 @@ export const womenFormData = [
       polygamyConditions: "",
       phone: "01066778800",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 35, to: 40 },
       qualification: "عالي",
       maritalStatus: ["اعزب"],
@@ -655,7 +655,7 @@ export const womenFormData = [
   {
     code: 20,
     suspended: false,
-    brideSpecifications: {
+    specifications: {
       name: "سناء عبد الله",
       job: "مصممة أزياء",
       description: "مبدعة وذات ذوق رفيع، أبحث عن شريك يشجع إبداعي.",
@@ -675,7 +675,7 @@ export const womenFormData = [
       polygamyConditions: "العدل والاحترام.",
       phone: "01077889900",
     },
-    groomRequirements: {
+    requirements: {
       ageRange: { from: 30, to: 35 },
       qualification: "عالي",
       maritalStatus: ["مطلق"],

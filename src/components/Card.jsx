@@ -32,7 +32,7 @@ function Card({ data }) {
               alt="Old Svg"
             />
             <p className="text-sm font-medium text-gray-700">
-              {data.brideSpecifications.age} سنة
+              {data.specifications.age} سنة
             </p>
           </div>
           <div className="flex-center gap-1 w-fit">
@@ -42,7 +42,7 @@ function Card({ data }) {
               alt="Status Svg"
             />
             <p className="text-sm font-medium text-gray-700">
-              {data.brideSpecifications.socialStatus}
+              {data.specifications.socialStatus}
             </p>
           </div>
           <div className="flex-center gap-1 w-fit">
@@ -52,7 +52,7 @@ function Card({ data }) {
               alt="Ruler Svg"
             />
             <p className="text-sm font-medium text-gray-700">
-              {data.brideSpecifications.height} سم
+              {data.specifications.height} سم
             </p>
           </div>
           <div className="flex-center gap-1 w-fit">
@@ -62,13 +62,13 @@ function Card({ data }) {
               alt="Location Svg"
             />
             <p className="text-sm font-medium text-gray-700">
-              {data.brideSpecifications.location}
+              {data.specifications.location}
             </p>
           </div>
         </div>
         <hr className="w-1/2 mx-auto my-3" />
         <p className="text-xs text-center font-medium w-full text-gray-700 truncate">
-          {data.brideSpecifications.description}
+          {data.specifications.description}
         </p>
         <hr className=" my-3" />
         <Link
