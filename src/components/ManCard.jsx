@@ -19,7 +19,7 @@ function ManCard({ data }) {
           </span>
         )}
         <img
-          src={data.specifications.img}
+          src={data.img}
           alt="mulslim man"
           className="h-28 w-28 mb-3 object-contain xs:object-cover object-center mx-auto rounded-full"
         />
@@ -30,9 +30,7 @@ function ManCard({ data }) {
               className="h-5 w-5 object-contain"
               alt="Old Svg"
             />
-            <p className="text-sm font-medium text-gray-700">
-              {data.specifications.age} سنة
-            </p>
+            <p className="text-sm font-medium text-gray-700">{data.age} سنة</p>
           </div>
           <div className="flex-center gap-1 w-fit">
             <img
@@ -41,7 +39,7 @@ function ManCard({ data }) {
               alt="Status Svg"
             />
             <p className="text-sm font-medium text-gray-700">
-              {data.specifications.socialStatus}
+              {data.socialStatus}
             </p>
           </div>
           <div className="flex-center gap-1 w-fit">
@@ -51,7 +49,7 @@ function ManCard({ data }) {
               alt="Ruler Svg"
             />
             <p className="text-sm font-medium text-gray-700">
-              {data.specifications.height} سم
+              {data.height} سم
             </p>
           </div>
           <div className="flex-center gap-1 w-fit">
@@ -61,13 +59,13 @@ function ManCard({ data }) {
               alt="Location Svg"
             />
             <p className="text-sm font-medium text-gray-700">
-              {data.specifications.location}
+              {data.governorate}
             </p>
           </div>
         </div>
         <hr className="w-1/2 mx-auto my-3" />
         <p className="text-xs text-center font-medium w-full text-gray-700 truncate">
-          {data.specifications.description}
+          {data.description}
         </p>
         <hr className=" my-3" />
         <Link

@@ -1,6 +1,6 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 
-function Pagination() {
+function Pagination({length}) {
   return (
     <div className="mt-8 flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
       <div className="flex flex-1 justify-between flex-col min-[260px]:flex-row gap-3 sm:hidden">
@@ -22,7 +22,7 @@ function Pagination() {
           <p className="text-sm text-gray-700">
             عرض <span className="font-medium">1</span> الي{" "}
             <span className="font-medium">20</span> من{" "}
-            <span className="font-medium">2000</span> إستمارة
+            <span className="font-medium">{length}</span> إستمارة
           </p>
         </div>
         <div>

@@ -2,7 +2,7 @@ import Alert from "./Alert";
 
 function AllAlerts() {
   return (
-    <div className="pb-12 space-y-4">
+    <div className="container-lg space-y-4">
       <Alert
         type="success"
         title="عن الموقع"

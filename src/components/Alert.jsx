@@ -5,7 +5,7 @@ function Alert({ type, title, message, isOpen }) {
         className={`border rounded-lg open:shadow-lg transition ${
           type === "success"
             ? "open:text-white hover:text-white border-main-dark open:bg-main-dark hover:bg-main-dark text-main-dark"
-            : "border-red-700 text-red-700"
+            : "border-red-700 text-red-700 hover:bg-gray-50"
         }`}
         open={isOpen}
       >

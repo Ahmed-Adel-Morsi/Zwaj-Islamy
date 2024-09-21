@@ -126,10 +126,14 @@ function SwiperSection({ children, title, routes }) {
       breakpoints: {
         550: {
           slidesPerView: 2.25,
+          spaceBetween: 10,
+        },
+        800: {
+          slidesPerView: 3.25,
           spaceBetween: 15,
         },
         1024: {
-          slidesPerView: 3.25,
+          slidesPerView: 4.25,
           spaceBetween: 20,
         },
         1280: {
@@ -154,7 +158,7 @@ function SwiperSection({ children, title, routes }) {
           <ChevronDoubleLeftIcon className="size-5" />
         </Link>
       </div>
-      <div className="swiper select-none mx-auto max-w-2xl lg:max-w-7xl pb-10">
+      <div className="swiper select-none  pb-10">
         <h2 className="sr-only">{title}</h2>
         <div className="swiper-wrapper">{children}</div>
         <div className="swiper-scrollbar cursor-grab active:cursor-grabbing !h-2 !w-1/2 !left-1/2 -translate-x-1/2"></div>
@@ -164,36 +168,8 @@ function SwiperSection({ children, title, routes }) {
 }
 
 function Forms() {
-  useEffect(() => {
-    new Swiper(".swiper", {
-      modules: [Scrollbar],
-      speed: 400,
-      slidesPerView: 1.25,
-      spaceBetween: 15,
-      grabCursor: true,
-      scrollbar: {
-        el: ".swiper-scrollbar",
-        draggable: true,
-      },
-      breakpoints: {
-        550: {
-          slidesPerView: 2.25,
-          spaceBetween: 15,
-        },
-        1024: {
-          slidesPerView: 3.25,
-          spaceBetween: 20,
-        },
-        1280: {
-          slidesPerView: 4.25,
-          spaceBetween: 30,
-        },
-      },
-    });
-  }, []);
-
   return (
-    <div className="container py-7 xs:py-12 lg:py-16 xl:py-24 mx-auto max-w-7xl px-3 xs:px-6 lg:px-8">
+    <div className="py-7 xs:py-12 lg:py-16 xl:py-24 mx-auto w-full max-w-7xl px-3 xs:px-6 lg:px-8">
       <div className="text-center">
         <h2 className="section-header">الاستمارات</h2>
         <p className="section-p text-gray-500">
@@ -222,7 +198,7 @@ function Forms() {
 
 function DownloadApp() {
   return (
-    <div className="container pb-7 xs:pb-12 lg:pb-16 xl:pb-24 mx-auto max-w-7xl px-3 xs:px-6 lg:px-8">
+    <div className="w-full pb-7 xs:pb-12 lg:pb-16 xl:pb-24 mx-auto max-w-7xl px-3 xs:px-6 lg:px-8">
       <div className="bg-teal-900 py-7 xs:py-12 sm:py-16 lg:py-24 max-w-7xl rounded-xl">
         <div className="px-3 xs:px-6 lg:px-8 text-center">
           <div>
