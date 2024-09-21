@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { ROUTES } from "../routes";
-import { PlusIcon } from "@heroicons/react/16/solid";
 import man_avatar from "../svgs/man.svg";
 import woman_avatar from "../svgs/woman.svg";
+import { useState } from "react";
 
 function Forms() {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   return (
     <div className="mx-auto px-6 py-12 sm:py-16 lg:py-24 xl:py-28 lg:px-8 flex-grow">
       <div className="mx-auto max-w-2xl text-center mb-6 sm:mb-12">
@@ -42,15 +44,61 @@ function Forms() {
             className="min-[260px]:size-40"
           />
         </Link>
-        <Link
-          to={`${ROUTES.NEW_FROM}`}
-          className="col-span-2 w-full px-4 py-4 flex-center flex-col xs:flex-row gap-1 bg-green-600 text-white transition border-2 rounded-lg hover:bg-green-700"
-        >
-          <PlusIcon className="hidden xs:inline size-6" />
-          <p className="text-center font-semibold text-[6vw] xs:text-xl">
-            استمارة جديدة
-          </p>
-        </Link>
+        <div className="relative col-span-2">
+          <button
+            id="dropdownDefaultButton"
+            data-dropdown-toggle="dropdown"
+            className="size-full text-white text-lg bg-main hover:bg-main-hov font-semibold rounded-lg px-5 py-3 text-center inline-flex items-center justify-center transition"
+            type="button"
+            onClick={() => setDropdownOpen(!dropdownOpen)}
+          >
+            إستمارة جديدة
+            <svg
+              className="w-2.5 h-2.5 ms-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 10 6"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m1 1 4 4 4-4"
+              />
+            </svg>
+          </button>
+
+          <div
+            id="dropdown"
+            className={`${
+              dropdownOpen ? "" : "hidden "
+            }z-10 w-full max-w-40 absolute mt-1 right-1/2 translate-x-1/2 bg-white text-gray-700 divide-y divide-gray-100 rounded-lg shadow-xl dark:bg-gray-700`}
+          >
+            <ul
+              className="py-2 font-semibold dark:text-gray-200"
+              aria-labelledby="dropdownDefaultButton"
+            >
+              <li className="text-center">
+                <Link
+                  to={`${ROUTES.MEN}/${ROUTES.NEW_FROM}`}
+                  className="block px-4 py-2 hover:bg-main hover:bg-opacity-10"
+                >
+                  رجال
+                </Link>
+              </li>
+              <li className="text-center">
+                <Link
+                  to={`${ROUTES.WOMEN}/${ROUTES.NEW_FROM}`}
+                  className="block px-4 py-2 hover:bg-main hover:bg-opacity-10"
+                >
+                  نساء
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );

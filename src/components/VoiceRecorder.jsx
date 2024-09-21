@@ -75,9 +75,9 @@ const VoiceRecorder = () => {
   return (
     <>
       <div className="sm:col-span-2">
-        <label className="label">تسجيل صوتي بموافقه الوالد لا يتخطي 15 ثانية</label>
+        <label className="label">تسجيل صوتي لا يتخطي 15 ثانية</label>
         <p className="text-xs font-medium leading-5 text-gray-600">
-          ( انا والد العروسه .. اوافق علي زواجها بدون قايمه )
+          ( انا العريس .. اوافق علي الزواج بدون قايمه )
         </p>
         <div className="flex flex-col md:flex-row gap-2 mt-2.5">
           <button

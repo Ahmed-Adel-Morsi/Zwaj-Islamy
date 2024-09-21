@@ -2,7 +2,7 @@ import homeVector from "../assets/squared-logo.png";
 import abdelkareem from "../assets/abdelkareem.png";
 import googlePlayIcon from "../assets/googleplay.png";
 import appStoreIcon from "../assets/appstore.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Swiper from "swiper";
 import { Scrollbar } from "swiper/modules";
 import "swiper/css";
@@ -20,6 +20,8 @@ import { menFormData } from "../lib/menFormData";
 import ManCard from "../components/ManCard";
 
 function Landing() {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   return (
     <div className="max-w-7xl min-h-[calc(100vh-81px-1.5rem)] mx-auto pt-5 pb-16 px-3 xs:px-6 lg:px-8 flex flex-col justify-evenly gap-8">
       <div className="block lg:flex-center gap-12">
@@ -47,12 +49,62 @@ function Landing() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start">
-              <Link
-                to={`${ROUTES.FORMS}/${ROUTES.NEW_FROM}`}
-                className="bg-main text-white font-semibold text-lg px-5 py-3 rounded-lg hover:bg-main-hov transition"
-              >
-                إستمارة جديدة
-              </Link>
+              <div className="relative">
+                <button
+                  id="dropdownDefaultButton"
+                  data-dropdown-toggle="dropdown"
+                  className="size-full text-white text-lg bg-main hover:bg-main-hov font-semibold rounded-lg px-5 py-3 text-center inline-flex items-center justify-center transition"
+                  type="button"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                >
+                  إستمارة جديدة
+                  <svg
+                    className="w-2.5 h-2.5 ms-3"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 10 6"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m1 1 4 4 4-4"
+                    />
+                  </svg>
+                </button>
+
+                <div
+                  id="dropdown"
+                  className={`${
+                    dropdownOpen ? "" : "hidden "
+                  }z-10 w-full absolute mt-1 right-0 bg-white text-gray-700 divide-y divide-gray-100 rounded-lg shadow-xl dark:bg-gray-700`}
+                >
+                  <ul
+                    className="py-2 text-sm font-semibold dark:text-gray-200"
+                    aria-labelledby="dropdownDefaultButton"
+                  >
+                    <li>
+                      <Link
+                        to={`${ROUTES.FORMS}/${ROUTES.MEN}/${ROUTES.NEW_FROM}`}
+                        className="block px-4 py-2 hover:bg-main hover:bg-opacity-10"
+                      >
+                        رجال
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to={`${ROUTES.FORMS}/${ROUTES.WOMEN}/${ROUTES.NEW_FROM}`}
+                        className="block px-4 py-2 hover:bg-main hover:bg-opacity-10"
+                      >
+                        نساء
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
               <Link
                 to={ROUTES.FORMS}
                 className="flex-center gap-2 border border-main text-main hover:bg-black/5 rounded-lg px-5 py-3 font-semibold text-lg transition"

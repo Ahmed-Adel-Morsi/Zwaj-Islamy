@@ -9,29 +9,33 @@ import {
 const statusOptions = [
   {
     id: "single",
-    name: "عزباء",
+    name: "أعزب",
   },
   {
     id: "divorced",
-    name: "مطلقة",
+    name: "مطلق",
   },
   {
     id: "widower",
-    name: "أرملة",
+    name: "أرمل",
+  },
+  {
+    id: "married",
+    name: "متزوج",
   },
 ];
 const qualificationOptions = [
   {
     id: "doctor",
-    name: "دكتورة",
+    name: "دكتور",
   },
   {
     id: "engineer",
-    name: "مهندسة",
+    name: "مهندس",
   },
   {
     id: "teacher",
-    name: "مُعلمة",
+    name: "معلم",
   },
   {
     id: "highQualification",
@@ -39,7 +43,7 @@ const qualificationOptions = [
   },
   {
     id: "graduate",
-    name: "خريجة",
+    name: "خريج",
   },
   {
     id: "diploma",
@@ -60,6 +64,30 @@ const qualificationOptions = [
   {
     id: "noQualification",
     name: "بدون مؤهل",
+  },
+];
+const housingOptions = [
+  {
+    id: "rent",
+    name: "إيجار",
+  },
+  {
+    id: "own",
+    name: "تمليك",
+  },
+];
+const areaOptions = [
+  {
+    id: "upscale",
+    name: "راقية",
+  },
+  {
+    id: "medium",
+    name: "متوسطة",
+  },
+  {
+    id: "popular",
+    name: "شعبية",
   },
 ];
 const skinColorOptions = [
@@ -146,6 +174,14 @@ function FirstPage() {
     name: "none",
   });
   const [aboutYourself, setAboutYourself] = useState("");
+  const [housing, setHousing] = useState({
+    id: "none",
+    name: "اختر",
+  });
+  const [area, setArea] = useState({
+    id: "none",
+    name: "اختر",
+  });
 
   return (
     <>
@@ -164,7 +200,7 @@ function FirstPage() {
         value={phoneNumber}
         onChange={setPhoneNumber}
         type="number"
-        label="رقم هاتف ولى الأمر"
+        label="رقم الهاتف"
         autoComplete="tel"
         fullWidth
       />
@@ -214,6 +250,19 @@ function FirstPage() {
         onChange={setGovernorate}
       />
 
+      <CustomDropdown
+        label="السكن"
+        value={housing}
+        onChange={setHousing}
+        options={housingOptions}
+      />
+      <CustomDropdown
+        label="المنطقة"
+        value={area}
+        onChange={setArea}
+        options={areaOptions}
+      />
+
       <CustomInput
         id="job"
         value={job}
@@ -224,12 +273,12 @@ function FirstPage() {
       />
 
       <CustomRadio
-        label="هل تحافظى على الصلوات الخمس"
+        label="هل تحافظ على الصلوات الخمس"
         value={prayer}
         onChange={setPrayer}
       />
       <CustomRadio
-        label="هل تقبلى الانتقال إلى أي محافظة أخرى"
+        label="هل تقبل الإنتقال إلى أي محافظة أخرى"
         value={anotherGovernorate}
         onChange={setAnotherGovernorate}
       />
@@ -253,7 +302,7 @@ function FirstPage() {
       )}
 
       <CustomRadio
-        label="هل تقبلى التعدد"
+        label="هل تقبل التعدد"
         value={acceptPolygamy}
         onChange={setAcceptPolygamy}
       />
@@ -281,7 +330,7 @@ function FirstPage() {
       />
 
       <CustomTextarea
-        label="تكلمى عن نفسك أو ما يقوله الناس عنك"
+        label="تكلم عن نفسك أو ما يقوله الناس عنك"
         id="aboutYourself"
         value={aboutYourself}
         onChange={setAboutYourself}

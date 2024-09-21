@@ -1,15 +1,15 @@
 import { useState } from "react";
-import FirstPage from "../components/groom/FirstPage";
-import SecondPage from "../components/groom/SecondPage";
-import ThirdPage from "../components/groom/ThirdPage";
+import FirstPage from "../components/bride/FirstPage";
+import SecondPage from "../components/bride/SecondPage";
+import ThirdPage from "../components/bride/ThirdPage";
 
 const pages = [
-  { id: 0, title: "بيانات العريس", component: <FirstPage /> },
-  { id: 1, title: "المواصفات المطلوبة فى العروسة", component: <SecondPage /> },
-  { id: 2, title: "شروط المبادرة", component: <ThirdPage /> },
+  { id: 0, title: "بيانات العروسة", component: <FirstPage /> },
+  { id: 1, title: "المواصفات المطلوبة فى العريس", component: <SecondPage /> },
+  { id: 2, title: "ولي أمر العروسة", component: <ThirdPage /> },
 ];
 
-function AddForm() {
+function AddWomanForm() {
   const [currentPage, setCurrentPage] = useState(pages[0]);
 
   const nextPage = () => setCurrentPage((prev) => pages[prev.id + 1]);
@@ -102,4 +102,4 @@ function AddForm() {
   );
 }
 
-export default AddForm;
+export default AddWomanForm;
