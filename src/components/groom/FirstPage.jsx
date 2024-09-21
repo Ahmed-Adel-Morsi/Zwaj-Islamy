@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   CustomInput,
   CustomDropdown,
   CustomRadio,
   CustomTextarea,
 } from "../CustomForm";
+import { UserCircleIcon, CameraIcon } from "@heroicons/react/16/solid";
 
 const statusOptions = [
   {
@@ -151,6 +152,8 @@ const governorateOptions = [
 ];
 
 function FirstPage() {
+  const photoInput = useRef(null);
+  const [image, setImage] = useState("");
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [age, setAge] = useState("");
@@ -183,8 +186,60 @@ function FirstPage() {
     name: "اختر",
   });
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(URL.createObjectURL(file));
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (image) {
+        URL.revokeObjectURL(image);
+      }
+    };
+  }, [image]);
+
   return (
     <>
+      <div className="col-span-full">
+        <label htmlFor="photo" className="label">
+          الصورة الشخصية
+        </label>
+        <div className="mt-2 flex flex-col items-center justify-center gap-y-3">
+          <div className="relative group">
+            {image ? (
+              <img
+                src={image}
+                alt="الصورة الشخصية"
+                className="size-20 rounded-full object-cover shadow-lg border"
+              />
+            ) : (
+              <UserCircleIcon
+                aria-hidden="true"
+                className="size-20 text-gray-300"
+              />
+            )}
+            <button
+              type="button"
+              onClick={() => photoInput.current.click()}
+              className="hidden group-hover:flex cursor-pointer absolute inset-0 bg-black text-white bg-opacity-20 rounded-full justify-center items-center"
+            >
+              <CameraIcon className="size-6" />
+            </button>
+          </div>
+          <input
+            type="file"
+            name="photo"
+            id="photo"
+            className="hidden"
+            ref={photoInput}
+            accept="image/*"
+            onChange={handleImageChange}
+          />
+        </div>
+      </div>
       <CustomInput
         id="full-name"
         value={fullName}

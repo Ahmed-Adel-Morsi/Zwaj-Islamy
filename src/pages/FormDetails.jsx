@@ -434,6 +434,14 @@ function FormDetails() {
     if (form) setFormData(form);
   }, [formNumber]);
 
+  useEffect(() => {
+    document.title = "بيانات الإستمارة";
+
+    return () => {
+      document.title = "زواج اسلامى";
+    };
+  }, []);
+
   return (
     <div className="grow w-full max-w-7xl mx-auto px-3 xs:px-6 lg:px-8 py-14">
       <div className="border-b pb-4">

@@ -1,4 +1,14 @@
+import { useEffect } from "react";
+
 function Courses() {
+  useEffect(() => {
+    document.title = "الكورسات";
+
+    return () => {
+      document.title = "زواج اسلامى";
+    };
+  }, []);
+
   return (
     <div className="flex-grow bg-teal-900 py-14">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">

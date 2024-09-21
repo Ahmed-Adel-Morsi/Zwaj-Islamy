@@ -2,10 +2,18 @@ import { Link } from "react-router-dom";
 import { ROUTES } from "../routes";
 import man_avatar from "../svgs/man.svg";
 import woman_avatar from "../svgs/woman.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Forms() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    document.title = "الإستمارات";
+
+    return () => {
+      document.title = "زواج اسلامى";
+    };
+  }, []);
 
   return (
     <div className="mx-auto px-6 py-12 sm:py-16 lg:py-24 xl:py-28 lg:px-8 flex-grow">

@@ -1,6 +1,15 @@
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
+import { useEffect } from "react";
 
 function Contact() {
+  useEffect(() => {
+    document.title = "تواصل معنا";
+
+    return () => {
+      document.title = "زواج اسلامى";
+    };
+  }, []);
+
   return (
     <div className="bg-white px-6 py-12 sm:py-16 lg:px-8">
       <div className="mx-auto max-w-2xl text-center">

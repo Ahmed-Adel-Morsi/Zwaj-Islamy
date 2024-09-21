@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
 import { ROUTES } from "../routes";
+import { useEffect } from "react";
 
 function NotFound() {
+  useEffect(() => {
+    document.title = "الصفحة غير موجودة";
+
+    return () => {
+      document.title = "زواج اسلامى";
+    };
+  }, []);
+
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full">
-        <body class="h-full">
-        ```
-      */}
       <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
         <div className="text-center">
           <p className="text-base font-semibold text-indigo-600">404</p>
