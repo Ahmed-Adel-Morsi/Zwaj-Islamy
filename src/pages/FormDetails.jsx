@@ -68,7 +68,7 @@ function Image() {
   );
 }
 
-function MasterSection({ specifications, suspended }) {
+function MasterSection({ formData }) {
   const [showNumber, setShowNumber] = useState(false);
   const [copied, setCopied] = useState(false);
   const phoneRef = useRef(null);
@@ -87,11 +87,11 @@ function MasterSection({ specifications, suspended }) {
         <Image />
         <div className="text-center my-6">
           <h3 className="text-[8vw] xs:text-3xl font-bold">
-            {specifications.socialStatus === "عزباء" ? "الآنسة" : "الأستاذة"}{" "}
-            {specifications.name[0]}
+            {formData.socialStatus === "عزباء" ? "الآنسة" : "الأستاذة"}{" "}
+            {formData.name[0]}
           </h3>
           <p className="text-[5vw] xs:text-lg text-red-700 font-bold mt-2">
-            {specifications.job}
+            {formData.job}
           </p>
         </div>
         <div className="text-center mt-8 mb-6 space-y-3">
@@ -103,7 +103,7 @@ function MasterSection({ specifications, suspended }) {
             <path d="M288.32 49.87H183.19v210.26L288.32 155zM126.81 155V49.87H21.68v210.26z"></path>
           </svg>
           <p className="text-[4.6vw] xs:text-base text-gray-500 font-semibold">
-            {specifications.description}
+            {formData.description}
           </p>
         </div>
         <div className="p-4 xs:p-6 sm:p-8 bg-orange-600 bg-opacity-20 rounded-lg">
@@ -127,8 +127,7 @@ function MasterSection({ specifications, suspended }) {
                 ></path>
               </svg>
               <p>
-                <span className="font-bold">السن :</span> {specifications.age}{" "}
-                سنة
+                <span className="font-bold">السن :</span> {formData.age} سنة
               </p>
             </div>
             <div className="flex items-center gap-2">
@@ -151,7 +150,7 @@ function MasterSection({ specifications, suspended }) {
               </svg>
               <p>
                 <span className="font-bold">الحالة الإجتماعية :</span>{" "}
-                {specifications.socialStatus}
+                {formData.socialStatus}
               </p>
             </div>
             <div className="flex items-center gap-2">
@@ -173,8 +172,7 @@ function MasterSection({ specifications, suspended }) {
                 ></path>
               </svg>
               <p>
-                <span className="font-bold">الطول :</span>{" "}
-                {specifications.height} سم
+                <span className="font-bold">الطول :</span> {formData.height} سم
               </p>
             </div>
             <div className="flex items-center gap-2">
@@ -197,11 +195,11 @@ function MasterSection({ specifications, suspended }) {
               </svg>
               <p>
                 <span className="font-bold">المحافظة :</span>{" "}
-                {specifications.location}
+                {formData.governorate}
               </p>
             </div>
           </div>
-          {!suspended && (
+          {!formData.suspended && (
             <div className="mt-6 xs:mt-10 text-center font-bold tracking-wide">
               {showNumber ? (
                 <>
@@ -220,11 +218,11 @@ function MasterSection({ specifications, suspended }) {
                       <span className="xs:hidden">نسخ الرقم</span>
                     </button>
                     <a
-                      href={`tel:${specifications.phone}`}
+                      href={`tel:${formData.phone}`}
                       className="grow flex-center text-[4.5vw] xs:text-sm hover:bg-black/5 p-3 xs:p-4 truncate"
                       ref={phoneRef}
                     >
-                      {specifications.phone}
+                      {formData.phone}
                     </a>
                   </div>
                   {copied && (
@@ -443,41 +441,37 @@ function FormDetails() {
       </div>
       {formData && (
         <div className="mt-8 flex flex-col md:flex-row gap-8">
-          <MasterSection
-            specifications={formData.specifications}
-            suspended={formData.suspended}
-          />
+          <MasterSection formData={formData} />
           <div className="grow w-full grid lg:grid-cols-2 gap-8">
             <div className="space-y-8">
               <Section title="مواصفات العروسة">
                 <ul className="space-y-3 text-gray-800 list-disc list-inside [&_li::marker]:text-red-700 text-[4.5vw] xs:text-base">
                   <li>
                     <span className="font-bold">اللون :</span>{" "}
-                    {formData.specifications.skinColor}
+                    {formData.skinColor}
                   </li>
                   <li>
                     <span className="font-bold">المؤهل :</span>{" "}
-                    {formData.specifications.qualification}
+                    {formData.qualification}
                   </li>
                   <li>
-                    <span className="font-bold">الوظيفة :</span>{" "}
-                    {formData.specifications.job}
+                    <span className="font-bold">الوظيفة :</span> {formData.job}
                   </li>
                   <li>
                     <span className="font-bold">الأطفال :</span>{" "}
-                    {formData.specifications.hasChildren
-                      ? `${formData.specifications.childrenNumber} أطفال`
+                    {formData.hasChildren
+                      ? `${formData.childrenNumber} أطفال`
                       : "بدون اطفال"}
                   </li>
                   <li>
                     <span className="font-bold">الحالة الصحية :</span>{" "}
-                    {formData.specifications.illnessOrDisability
-                      ? `اعانى من ${formData.specifications.healthStatus}`
+                    {formData.illnessOrDisability
+                      ? `اعانى من ${formData.healthStatus}`
                       : "لا اعانى من اي امراض او إعاقة"}
                   </li>
                   <li>
                     <span className="font-bold">الصلاة :</span>{" "}
-                    {formData.specifications.prayer
+                    {formData.prayer
                       ? "نعم احافظ على الصلاة"
                       : "لا احافظ على الصلاة"}
                   </li>
@@ -487,21 +481,19 @@ function FormDetails() {
                 <ul className="space-y-3 text-gray-800 list-disc list-inside [&_li::marker]:text-red-700 text-[4.5vw] xs:text-base">
                   <li>
                     <span className="font-bold">المحافظة : </span>
-                    {formData.specifications.sameGovernment
+                    {formData.sameGovernorate
                       ? "لا أقبل الانتقال لمحافظة أخرى"
                       : "أقبل الانتقال لمحافظة أخرى"}
                   </li>
                   <li>
                     <span className="font-bold">التعدد : </span>
-                    {formData.specifications.acceptPolygamy
-                      ? "أقبل التعدد"
-                      : "لا أقبل التعدد"}
+                    {formData.acceptPolygamy ? "أقبل التعدد" : "لا أقبل التعدد"}
                   </li>
-                  {formData.specifications.acceptPolygamy &&
-                    formData.specifications.polygamyConditions !== "" && (
+                  {formData.acceptPolygamy &&
+                    formData.polygamyConditions !== "" && (
                       <li>
                         <span className="font-bold">شروط التعدد : </span>
-                        {formData.specifications.polygamyConditions}
+                        {formData.polygamyConditions}
                       </li>
                     )}
                 </ul>
@@ -510,28 +502,28 @@ function FormDetails() {
                 <ul className="space-y-3 text-gray-800 list-disc list-inside [&_li::marker]:text-red-700 text-[4.5vw] xs:text-base">
                   <li>
                     <span className="font-bold">السن :</span> من{" "}
-                    {formData.requirements.ageRange.from} الى{" "}
-                    {formData.requirements.ageRange.to} سنة
+                    {formData.groomAgeRange.from} الى{" "}
+                    {formData.groomAgeRange.to} سنة
                   </li>
                   <li>
                     <span className="font-bold">المؤهل :</span>{" "}
-                    {formData.requirements.qualification}
+                    {formData.groomQualification}
                   </li>
                   <li>
                     <span className="font-bold">الحالة الإجماعية :</span>{" "}
-                    {formData.requirements.maritalStatus.join(" أو ")}
+                    {formData.groomMaritalStatus.join(" أو ")}
                   </li>
                   <li>
                     <span className="font-bold">الأطفال :</span>{" "}
-                    {formData.requirements.children.join(" أو ")}
+                    {formData.groomchildren.join(" أو ")}
                   </li>
                   <li>
                     <span className="font-bold">السكن :</span>{" "}
-                    {formData.requirements.housing}
+                    {formData.groomHousing}
                   </li>
                   <li>
                     <span className="font-bold">المنطقة :</span>{" "}
-                    {formData.requirements.area}
+                    {formData.groomRegion}
                   </li>
                 </ul>
               </Section>
@@ -539,12 +531,12 @@ function FormDetails() {
             <div className="space-y-8">
               <Section title="شروط آخرى">
                 <p className="text-gray-800 text-[4.5vw] xs:text-base">
-                  {formData.requirements.otherConditions}
+                  {formData.otherConditions}
                 </p>
               </Section>
               <Section title="ملاحظات اضافية">
                 <p className="text-gray-800 text-[4.5vw] xs:text-base">
-                  {formData.requirements.additionalNotes}
+                  {formData.additionalNotes}
                 </p>
               </Section>
               <Section title="إجراءات">

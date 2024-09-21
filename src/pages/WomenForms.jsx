@@ -19,173 +19,160 @@ import {
   MagnifyingGlassIcon,
   MinusIcon,
   PlusIcon,
-  Squares2X2Icon,
 } from "@heroicons/react/20/solid";
-import Card from "../components/Card";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../routes";
 import AllAlerts from "../components/AllAlerts";
-import { womenFormData } from "../lib/womenFormData";
+import Card from "../components/Card";
 import Pagination from "../components/Pagination";
-
-const sortOptions = [
-  { name: "عشوائى", href: "#", current: true },
-  { name: "رقم الاستمارة", href: "#", current: false },
-  { name: "السن: من الأصغر للأكبر", href: "#", current: false },
-  { name: "السن: من الأكبر للأصغر", href: "#", current: false },
-  { name: "الطول: من الأقصر للأطول", href: "#", current: false },
-  { name: "الطول: من الأطول للأقصر", href: "#", current: false },
-];
+import { womenFormData } from "../lib/womenFormData";
 
 const filters = [
   {
-    id: "form_status",
+    id: "suspended",
     name: "حالة الاستمارة",
     options: [
-      { value: "suspended", label: "معلقة", checked: false },
-      { value: "valid", label: "سارية", checked: false },
+      { value: "true", label: "معلقة" },
+      { value: "false", label: "سارية" },
     ],
   },
   {
-    id: "governorates",
+    id: "governorate",
     name: "المحافظات",
     options: [
-      { value: "aswan", label: "أسوان", checked: false },
-      { value: "asyut", label: "أسيوط", checked: false },
-      { value: "alexandria", label: "الاسكندرية", checked: false },
-      { value: "ismailia", label: "الإسماعيلية", checked: false },
-      { value: "luxor", label: "الأقصر", checked: false },
-      { value: "red-sea", label: "البحر الأحمر", checked: false },
-      { value: "beheira", label: "البحيرة", checked: false },
-      { value: "giza", label: "الجيزة", checked: false },
-      { value: "dakahlia", label: "الدقهلية", checked: false },
-      { value: "suez", label: "السويس", checked: false },
-      { value: "sharqia", label: "الشرقية", checked: false },
-      { value: "gharbia", label: "الغربية", checked: false },
-      { value: "faiyum", label: "الفيوم", checked: false },
-      { value: "cairo", label: "القاهرة", checked: false },
-      { value: "qalyubia", label: "القليوبية", checked: false },
-      { value: "menofia", label: "المنوفية", checked: false },
-      { value: "minya", label: "المنيا", checked: false },
-      { value: "new-valley", label: "الوادي الجديد", checked: false },
-      { value: "beni-suef", label: "بني سويف", checked: false },
-      { value: "port-said", label: "بورسعيد", checked: false },
-      { value: "south-sinai", label: "جنوب سيناء", checked: false },
-      { value: "damietta", label: "دمياط", checked: false },
-      { value: "sohag", label: "سوهاج", checked: false },
-      { value: "north-sinai", label: "شمال سيناء", checked: false },
-      { value: "qena", label: "قنا", checked: false },
-      { value: "kafr-el-sheikh", label: "كفر الشيخ", checked: false },
-      { value: "matrouh", label: "مطروح", checked: false },
+      { value: "أسوان", label: "أسوان" },
+      { value: "أسيوط", label: "أسيوط" },
+      { value: "الإسكندرية", label: "الإسكندرية" },
+      { value: "الإسماعيلية", label: "الإسماعيلية" },
+      { value: "الأقصر", label: "الأقصر" },
+      { value: "البحر الأحمر", label: "البحر الأحمر" },
+      { value: "البحيرة", label: "البحيرة" },
+      { value: "الجيزة", label: "الجيزة" },
+      { value: "الدقهلية", label: "الدقهلية" },
+      { value: "السويس", label: "السويس" },
+      { value: "الشرقية", label: "الشرقية" },
+      { value: "الغربية", label: "الغربية" },
+      { value: "الفيوم", label: "الفيوم" },
+      { value: "القاهرة", label: "القاهرة" },
+      { value: "القليوبية", label: "القليوبية" },
+      { value: "المنوفية", label: "المنوفية" },
+      { value: "المنيا", label: "المنيا" },
+      { value: "الوادي الجديد", label: "الوادي الجديد" },
+      { value: "بني سويف", label: "بني سويف" },
+      { value: "بورسعيد", label: "بورسعيد" },
+      { value: "جنوب سيناء", label: "جنوب سيناء" },
+      { value: "دمياط", label: "دمياط" },
+      { value: "سوهاج", label: "سوهاج" },
+      { value: "شمال سيناء", label: "شمال سيناء" },
+      { value: "قنا", label: "قنا" },
+      { value: "كفر الشيخ", label: "كفر الشيخ" },
+      { value: "مطروح", label: "مطروح" },
     ],
   },
   {
-    id: "status",
+    id: "socialStatus",
     name: "الحالة الاجتماعية",
     options: [
-      { value: "single", label: "عزباء", checked: false },
-      { value: "divorcee", label: "مطلقة", checked: false },
-      { value: "widow", label: "أرملة", checked: false },
+      { value: "عزباء", label: "عزباء" },
+      { value: "مطلقة", label: "مطلقة" },
+      { value: "أرملة", label: "أرملة" },
     ],
   },
   {
     id: "skinColor",
     name: "لون البشرة",
     options: [
-      { value: "dark", label: "داكن", checked: false },
-      { value: "light", label: "فاتح", checked: false },
-      { value: "burgundy", label: "عنابي", checked: false },
-      { value: "wheaten", label: "قمحي", checked: false },
-      { value: "blonde", label: "شقراء", checked: false },
-      { value: "black", label: "سمراء", checked: false },
-      { value: "white", label: "بيضاء / ناصعة البياض", checked: false },
+      { value: "داكنة", label: "داكنة" },
+      { value: "فاتحة", label: "فاتحة" },
+      { value: "عنابية", label: "عنابية" },
+      { value: "قمحية", label: "قمحية" },
+      { value: "شقراء", label: "شقراء" },
+      { value: "سمراء", label: "سمراء" },
+      { value: "بيضاء / ناصعة البياض", label: "بيضاء / ناصعة البياض" },
     ],
   },
   {
-    id: "haveKids",
+    id: "hasChildren",
     name: "لديها اطفال",
     options: [
-      { value: "yes", label: "نعم", checked: false },
-      { value: "no", label: "لا", checked: false },
+      { value: "true", label: "نعم" },
+      { value: "false", label: "لا" },
     ],
   },
   {
-    id: "moveToOtherCity",
+    id: "sameGovernorate",
     name: "الانتقال إلى محافظة أخرى",
     options: [
-      { value: "yes", label: "نعم", checked: false },
-      { value: "no", label: "لا", checked: false },
+      { value: "true", label: "نعم" },
+      { value: "false", label: "لا" },
     ],
   },
   {
-    id: "region",
-    name: "المنطقة",
-    options: [
-      { value: "classy", label: "راقية", checked: false },
-      { value: "medium", label: "متوسطة", checked: false },
-      { value: "popular", label: "شعبية", checked: false },
-    ],
-  },
-  {
-    id: "living",
+    id: "groomHousing",
     name: "السكن",
     options: [
-      { value: "ownership", label: "تمليك", checked: false },
-      { value: "rent", label: "ايجار", checked: false },
+      { value: "تمليك", label: "تمليك" },
+      { value: "إيجار", label: "إيجار" },
+    ],
+  },
+  {
+    id: "groomRegion",
+    name: "المنطقة",
+    options: [
+      { value: "راقية", label: "راقية" },
+      { value: "متوسطة", label: "متوسطة" },
+      { value: "شعبية", label: "شعبية" },
     ],
   },
   {
     id: "qualification",
     name: "المؤهل",
     options: [
-      { value: "doctor", label: "دكتور / دكتورة", checked: false },
-      { value: "engineer", label: "مهندس / مهندسة", checked: false },
-      { value: "teacher", label: "معلم / معلمة", checked: false },
-      { value: "graduate", label: "خريج / خريجة", checked: false },
-      { value: "highSchool", label: "مؤهل متوسط ( ثانوية )", checked: false },
-      { value: "middleSchool", label: "شهادة اعدادية", checked: false },
-      { value: "primarySchool", label: "شهادة ابتدائية", checked: false },
-      { value: "noQualification", label: "بدون مؤهل", checked: false },
-      { value: "highQualification", label: "مؤهل عالي", checked: false },
+      { value: "دكتورة", label: "دكتورة" },
+      { value: "مهندسة", label: "مهندسة" },
+      { value: "معلمة", label: "معلمة" },
+      { value: "مؤهل عالي", label: "مؤهل عالي" },
+      { value: "خريجة", label: "خريجة" },
+      { value: "دبلوم", label: "دبلوم" },
+      { value: "مؤهل متوسط ( ثانوية )", label: "مؤهل متوسط ( ثانوية )" },
+      { value: "شهادة اعدادية", label: "شهادة اعدادية" },
+      { value: "شهادة ابتدائية", label: "شهادة ابتدائية" },
+      { value: "بدون مؤهل", label: "بدون مؤهل" },
     ],
   },
   {
     id: "acceptDivorcedWidow",
-    name: "توافق بمطلق او ارمل",
+    name: "توافق بمطلق او أرمل",
     options: [
-      { value: "yes", label: "نعم", checked: false },
-      { value: "no", label: "لا", checked: false },
+      { value: "true", label: "نعم" },
+      { value: "false", label: "لا" },
     ],
   },
   {
     id: "groomQualification",
     name: "مؤهل العريس",
     options: [
-      { value: "doctor", label: "دكتور / دكتورة", checked: false },
-      { value: "engineer", label: "مهندس / مهندسة", checked: false },
-      { value: "teacher", label: "معلم / معلمة", checked: false },
-      { value: "graduate", label: "خريج / خريجة", checked: false },
-      { value: "highSchool", label: "مؤهل متوسط ( ثانوية )", checked: false },
-      { value: "middleSchool", label: "شهادة اعدادية", checked: false },
-      { value: "primarySchool", label: "شهادة ابتدائية", checked: false },
-      { value: "noQualification", label: "بدون مؤهل", checked: false },
-      { value: "highQualification", label: "مؤهل عالي", checked: false },
+      { value: "دكتور", label: "دكتور" },
+      { value: "مهندس", label: "مهندس" },
+      { value: "معلم", label: "معلم" },
+      { value: "مؤهل عالي", label: "مؤهل عالي" },
+      { value: "خريج", label: "خريج" },
+      { value: "دبلوم", label: "دبلوم" },
+      {
+        value: "مؤهل متوسط ( ثانوية )",
+        label: "مؤهل متوسط ( ثانوية )",
+      },
+      { value: "شهادة اعدادية", label: "شهادة اعدادية" },
+      { value: "شهادة ابتدائية", label: "شهادة ابتدائية" },
+      { value: "بدون مؤهل", label: "بدون مؤهل" },
     ],
   },
   {
     id: "acceptPolygamy",
     name: "تقبل التعدد",
     options: [
-      { value: "yes", label: "نعم", checked: false },
-      { value: "no", label: "لا", checked: false },
-    ],
-  },
-  {
-    id: "ageRange",
-    name: "السن",
-    options: [
-      { value: "age_from", label: "من", inputType: "text" },
-      { value: "age_to", label: "الى", inputType: "text" },
+      { value: "true", label: "نعم" },
+      { value: "false", label: "لا" },
     ],
   },
 ];
@@ -198,14 +185,139 @@ function WomenForms() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredForms, setFilteredForms] = useState(womenFormData);
+  const [activeFilters, setActiveFilters] = useState({});
+  const [ageFilter, setAgeFilter] = useState({ from: "", to: "" });
+  const [sortBy, setSortBy] = useState("random");
+
+  const sortOptions = [
+    {
+      name: "عشوائى",
+      id: "random",
+      action: () => {
+        setSortBy("random");
+      },
+    },
+    {
+      name: "رقم الاستمارة: من الأصغر للأكبر",
+      id: "formCodeAsc",
+      action: () => {
+        setSortBy("formCodeAsc");
+      },
+    },
+    {
+      name: "رقم الاستمارة: من الأكبر للأصغر",
+      id: "formCodeDesc",
+      action: () => {
+        setSortBy("formCodeDesc");
+      },
+    },
+    {
+      name: "السن: من الأصغر للأكبر",
+      id: "ageAsc",
+      action: () => {
+        setSortBy("ageAsc");
+      },
+    },
+    {
+      name: "السن: من الأكبر للأصغر",
+      id: "ageDesc",
+      action: () => {
+        setSortBy("ageDesc");
+      },
+    },
+    {
+      name: "الطول: من الأقصر للأطول",
+      id: "heightAsc",
+      action: () => {
+        setSortBy("heightAsc");
+      },
+    },
+    {
+      name: "الطول: من الأطول للأقصر",
+      id: "heightDesc",
+      action: () => {
+        setSortBy("heightDesc");
+      },
+    },
+  ];
+
+  const handleFilterChange = (sectionId, value) => {
+    setActiveFilters((prevFilters) => {
+      const newFilters = { ...prevFilters };
+      if (!newFilters[sectionId]) {
+        newFilters[sectionId] = [];
+      }
+
+      if (newFilters[sectionId].includes(value)) {
+        newFilters[sectionId] = newFilters[sectionId].filter(
+          (v) => v !== value
+        );
+      } else {
+        newFilters[sectionId].push(value);
+      }
+
+      return newFilters;
+    });
+  };
+
+  const sortForms = (forms) => {
+    switch (sortBy) {
+      case "formCodeAsc":
+        return forms.sort((a, b) => a.code - b.code);
+      case "formCodeDesc":
+        return forms.sort((a, b) => b.code - a.code);
+      case "ageAsc":
+        return forms.sort((a, b) => a.age - b.age);
+      case "ageDesc":
+        return forms.sort((a, b) => b.age - a.age);
+      case "heightAsc":
+        return forms.sort((a, b) => a.height - b.height);
+      case "heightDesc":
+        return forms.sort((a, b) => b.height - a.height);
+      default:
+        return forms.sort(() => Math.random() - 0.5);
+    }
+  };
+
+  const applyFilters = () => {
+    let filtered = womenFormData.filter((form) =>
+      `${form.code} ${form.name}`.includes(searchQuery)
+    );
+
+    Object.keys(activeFilters).forEach((filterKey) => {
+      const selectedOptions = activeFilters[filterKey];
+      if (selectedOptions.length > 0) {
+        filtered = filtered.filter((form) =>
+          selectedOptions.includes(`${form[filterKey]}`)
+        );
+      }
+    });
+
+    if (ageFilter.from !== "") {
+      filtered = filtered.filter((form) => form.age >= ageFilter.from);
+    }
+    if (ageFilter.to !== "") {
+      filtered = filtered.filter((form) => form.age <= ageFilter.to);
+    }
+
+    setFilteredForms(sortForms([...filtered]));
+  };
 
   useEffect(() => {
-    setFilteredForms(
-      womenFormData.filter((form) =>
-        `${form.code} ${form.specifications.name}`.includes(searchQuery)
-      )
-    );
-  }, [searchQuery]);
+    applyFilters();
+  }, [searchQuery, activeFilters, ageFilter]);
+
+  useEffect(() => {
+    setFilteredForms(sortForms([...filteredForms]));
+  }, [sortBy]);
+
+  useEffect(() => {
+    document.title = "إستمارات النساء";
+
+    return () => {
+      document.title = "زواج اسلامى";
+    };
+  }, []);
 
   return (
     <div>
@@ -226,7 +338,7 @@ function WomenForms() {
             className="relative ml-auto flex h-full w-full max-w-xs transform flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl transition duration-300 ease-in-out data-[closed]:translate-x-full"
           >
             <div className="flex items-center justify-between px-4">
-              <h2 className="text-lg font-medium text-gray-900">Filters</h2>
+              <h2 className="text-lg font-medium text-gray-900">بحث متقدم</h2>
               <button
                 type="button"
                 onClick={() => setMobileFiltersOpen(false)}
@@ -281,15 +393,22 @@ function WomenForms() {
                         <div key={option.value} className="flex items-center">
                           <input
                             defaultValue={option.value}
-                            defaultChecked={option.checked}
                             id={`filter-mobile-${section.id}-${optionIdx}`}
                             name={`${section.id}[]`}
                             type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                            checked={
+                              activeFilters[section.id]?.includes(
+                                option.value
+                              ) || false
+                            }
+                            onChange={() =>
+                              handleFilterChange(section.id, option.value)
+                            }
+                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
                           />
                           <label
                             htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
-                            className="mr-3 min-w-0 flex-1 text-gray-500"
+                            className="pr-3 min-w-0 flex-1 text-gray-500 cursor-pointer"
                           >
                             {option.label}
                           </label>
@@ -299,90 +418,146 @@ function WomenForms() {
                   </DisclosurePanel>
                 </Disclosure>
               ))}
+              <Disclosure
+                as="div"
+                className="border-t border-gray-200 px-4 py-6"
+              >
+                <h3 className="-mx-2 -my-3 flow-root">
+                  <DisclosureButton className="group flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
+                    <span className="font-medium text-gray-900">السن</span>
+                    <span className="ml-6 flex items-center">
+                      <PlusIcon
+                        aria-hidden="true"
+                        className="h-5 w-5 group-data-[open]:hidden"
+                      />
+                      <MinusIcon
+                        aria-hidden="true"
+                        className="h-5 w-5 [.group:not([data-open])_&]:hidden"
+                      />
+                    </span>
+                  </DisclosureButton>
+                </h3>
+                <DisclosurePanel className="pt-6">
+                  <div className="flex gap-4">
+                    <input
+                      value={ageFilter.from}
+                      id="ageFrom"
+                      name="ageFrom"
+                      type="number"
+                      placeholder="من"
+                      onChange={(e) =>
+                        setAgeFilter((prev) => ({
+                          ...prev,
+                          from: e.target.value,
+                        }))
+                      }
+                      className="w-1/2 rounded border p-2 border-gray-300  focus:ring-indigo-500"
+                    />
+                    <input
+                      value={ageFilter.to}
+                      id="ageTo"
+                      name="ageTo"
+                      type="number"
+                      placeholder="إلى"
+                      onChange={(e) =>
+                        setAgeFilter((prev) => ({
+                          ...prev,
+                          to: e.target.value,
+                        }))
+                      }
+                      className="w-1/2 rounded border p-2 border-gray-300  focus:ring-indigo-500"
+                    />
+                  </div>
+                </DisclosurePanel>
+              </Disclosure>
             </form>
           </DialogPanel>
         </div>
       </Dialog>
 
-      <main className="mx-auto max-w-[1700px] px-6 sm:px-8 lg:px-10 pt-12 md:pt-16 xl:pt-24">
+      <main className="pt-12 md:pt-16 xl:pt-24">
         <AllAlerts />
-        <div className="flex flex-col sm:flex-row items-center gap-8 justify-between border-b border-gray-200 pb-6">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 text-center sm:text-right">
-            استمارات النساء
-          </h1>
+        <div className="border-b border-gray-200 sm:sticky top-[4.5rem] z-30 bg-white">
+          <div className="container-lg flex flex-col sm:flex-row items-center gap-8 justify-between py-4 mt-6">
+            <h1 className="shrink-0 text-4xl font-bold tracking-tight text-gray-900 text-center sm:text-right">
+              استمارات النساء
+            </h1>
 
-          <div className="relative rounded-md shadow-sm w-full md:w-1/2">
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-              <span className="text-gray-500 sm:text-sm">
-                <MagnifyingGlassIcon className="size-4" />
-              </span>
-            </div>
-            <input
-              id="form_code"
-              name="form_code"
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="ابحث عن الإستمارة بالكود"
-              className="block w-full rounded-md border-0 py-1.5 px-8 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-            />
-          </div>
-
-          <div className="flex items-center">
-            <Menu as="div" className="relative inline-block text-left">
-              <div>
-                <MenuButton className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                  ترتيب
-                  <ChevronDownIcon
-                    aria-hidden="true"
-                    className="-ml-1 mr-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                  />
-                </MenuButton>
+            <div className="relative rounded-md shadow-sm w-full md:w-1/2">
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                <span className="text-gray-500 sm:text-sm">
+                  <MagnifyingGlassIcon className="size-4" />
+                </span>
               </div>
+              <input
+                id="form_code"
+                name="form_code"
+                type="text"
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  window.scroll({
+                    top: 600,
+                    behavior: "smooth",
+                  });
+                }}
+                placeholder="ابحث عن الإستمارة بالكود"
+                className="block w-full rounded-md border-0 py-1.5 px-8 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+              />
+            </div>
 
-              <MenuItems
-                transition
-                className="absolute left-0 z-10 mt-2 w-48 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
-              >
-                <div className="py-1">
-                  {sortOptions.map((option) => (
-                    <MenuItem key={option.name}>
-                      <a
-                        href={option.href}
-                        className={classNames(
-                          option.current
-                            ? "font-medium text-gray-900"
-                            : "text-gray-500",
-                          "block px-4 py-2 text-sm data-[focus]:bg-gray-100"
-                        )}
-                      >
-                        {option.name}
-                      </a>
-                    </MenuItem>
-                  ))}
+            <div className="flex items-center">
+              <Menu as="div" className="relative inline-block text-left">
+                <div>
+                  <MenuButton className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+                    ترتيب
+                    <ChevronDownIcon
+                      aria-hidden="true"
+                      className="-ml-1 mr-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                    />
+                  </MenuButton>
                 </div>
-              </MenuItems>
-            </Menu>
 
-            <button
-              type="button"
-              className="-m-2 mr-5 p-2 text-gray-400 hover:text-gray-500 sm:mr-7"
-            >
-              <span className="sr-only">View grid</span>
-              <Squares2X2Icon aria-hidden="true" className="h-5 w-5" />
-            </button>
-            <button
-              type="button"
-              onClick={() => setMobileFiltersOpen(true)}
-              className="-m-2 mr-4 p-2 text-gray-400 hover:text-gray-500 sm:mr-6 lg:hidden"
-            >
-              <span className="sr-only">Filters</span>
-              <FunnelIcon aria-hidden="true" className="h-5 w-5" />
-            </button>
+                <MenuItems
+                  transition
+                  className="absolute left-1/2 -translate-x-[55%] sm:translate-x-0 sm:left-0 z-10 mt-2 w-56 max-w-[100vw] sm:origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+                >
+                  <div className="py-1">
+                    {sortOptions.map((option) => (
+                      <MenuItem key={option.name}>
+                        <button
+                          onClick={option.action}
+                          className={classNames(
+                            sortBy === option.id
+                              ? "font-medium text-gray-900"
+                              : "text-gray-500",
+                            "block w-full text-right px-4 py-2 text-sm data-[focus]:bg-gray-100"
+                          )}
+                        >
+                          {option.name}
+                        </button>
+                      </MenuItem>
+                    ))}
+                  </div>
+                </MenuItems>
+              </Menu>
+
+              <button
+                type="button"
+                onClick={() => setMobileFiltersOpen(true)}
+                className="-m-2 mr-4 p-2 text-gray-400 hover:text-gray-500 sm:mr-6 lg:hidden"
+              >
+                <span className="sr-only">Filters</span>
+                <FunnelIcon aria-hidden="true" className="h-5 w-5" />
+              </button>
+            </div>
           </div>
         </div>
 
-        <section aria-labelledby="products-heading" className="pb-24 pt-6">
+        <section
+          aria-labelledby="products-heading"
+          className="container-lg pb-24 pt-6"
+        >
           <h2 id="products-heading" className="sr-only">
             Products
           </h2>
@@ -435,15 +610,22 @@ function WomenForms() {
                         <div key={option.value} className="flex items-center">
                           <input
                             defaultValue={option.value}
-                            defaultChecked={option.checked}
                             id={`filter-${section.id}-${optionIdx}`}
                             name={`${section.id}[]`}
                             type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                            checked={
+                              activeFilters[section.id]?.includes(
+                                option.value
+                              ) || false
+                            }
+                            onChange={() =>
+                              handleFilterChange(section.id, option.value)
+                            }
+                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
                           />
                           <label
                             htmlFor={`filter-${section.id}-${optionIdx}`}
-                            className="mr-3 text-sm text-gray-600"
+                            className="pr-3 text-sm text-gray-600 cursor-pointer"
                           >
                             {option.label}
                           </label>
@@ -453,6 +635,55 @@ function WomenForms() {
                   </DisclosurePanel>
                 </Disclosure>
               ))}
+              <Disclosure as="div" className="border-gray-200 py-6">
+                <h3 className="-mx-2 -my-3 flow-root">
+                  <DisclosureButton className="group flex w-full items-center justify-between bg-white px-2 py-3 text-sm text-gray-400 hover:text-gray-500">
+                    <span className="font-medium text-gray-900">السن</span>
+                    <span className="ml-6 flex items-center">
+                      <PlusIcon
+                        aria-hidden="true"
+                        className="h-5 w-5 group-data-[open]:hidden"
+                      />
+                      <MinusIcon
+                        aria-hidden="true"
+                        className="h-5 w-5 [.group:not([data-open])_&]:hidden"
+                      />
+                    </span>
+                  </DisclosureButton>
+                </h3>
+                <DisclosurePanel className="pt-6">
+                  <div className="flex gap-4">
+                    <input
+                      value={ageFilter.from}
+                      id="ageFrom"
+                      name="ageFrom"
+                      type="number"
+                      placeholder="من"
+                      onChange={(e) =>
+                        setAgeFilter((prev) => ({
+                          ...prev,
+                          from: e.target.value,
+                        }))
+                      }
+                      className="w-1/2 rounded border p-2 border-gray-300  focus:ring-indigo-500"
+                    />
+                    <input
+                      value={ageFilter.to}
+                      id="ageTo"
+                      name="ageTo"
+                      type="number"
+                      placeholder="إلى"
+                      onChange={(e) =>
+                        setAgeFilter((prev) => ({
+                          ...prev,
+                          to: e.target.value,
+                        }))
+                      }
+                      className="w-1/2 rounded border p-2 border-gray-300  focus:ring-indigo-500"
+                    />
+                  </div>
+                </DisclosurePanel>
+              </Disclosure>
             </form>
 
             {/* Product grid */}
@@ -462,7 +693,7 @@ function WomenForms() {
                   <Card key={form.code} data={form} />
                 ))}
               </div>
-              <Pagination />
+              <Pagination length={filteredForms.length} />
             </div>
           </div>
         </section>
