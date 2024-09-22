@@ -143,7 +143,7 @@ function Contact() {
         <div className="flex font-medium text-white justify-center gap-5">
           <a
             className="flex rounded bg-green-500 p-3 hover:bg-green-600"
-            href="https://wa.me/201097520541"
+            href="https://wa.me/+201097520541"
             target="_blank"
           >
             <svg

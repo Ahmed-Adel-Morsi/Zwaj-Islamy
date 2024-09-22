@@ -31,7 +31,7 @@ function Courses() {
               لشراء الكورس راسلنا على واتساب :{" "}
               <a
                 className="text-yellow-400 hover:text-yellow-500"
-                href="https://wa.me/01029770870"
+                href="https://wa.me/+201029770870"
                 target="_blank"
               >
                 01029770870
